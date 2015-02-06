@@ -3,6 +3,7 @@ div {
 }
 p {
   margin: 0px;
+  display: inline-block;
 }
 
 div#new {
@@ -13,4 +14,17 @@ div#new {
 }
 div#new p {
   padding: 12px 0px;
+}
+div#numMines {
+  width: 50px;
+  height: 30px;
+  background-color: #ff0000;
+  text-align: center;
+}
+div#numMines p {
+  padding: 7px 0px;
+}
+p#numMinesLabel {
+  background-color: #ff0000;
+  padding: 7px 3px;
 }
