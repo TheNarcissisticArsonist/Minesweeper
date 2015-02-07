@@ -239,6 +239,7 @@ var board = {
   rc1514: 0,
   rc1515: 0,
 };
+var numMines;
 
 function newGame() {
   numMines = prompt("How many mines?");
@@ -252,6 +253,18 @@ function newGame() {
   }
   placeMines();
 };
+function placeMine() {
+  r = ("0" + String(Math.floor(Math.random() * 15 + 1))).slice(-2);
+  c = ("0" + String(Math.floor(Math.random() * 15 + 1))).slice(-2);
+  if(board["rc" + r + c] == 0) {
+    board["rc" + r + c] = 1;
+  }
+  else {
+    placeMine();
+  }
+}
 function placeMines() {
-
+  for(i=1; i<=numMines; i++) {
+    placeMine();
+  }
 };
