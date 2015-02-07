@@ -17,16 +17,16 @@ div#new p {
 }
 div#numMines {
   width: 50px;
-  height: 30px;
+  height: 40px;
   background-color: #ff0000;
   text-align: center;
 }
 div#numMines p {
-  padding: 7px 0px;
+  padding: 12px 0px;
 }
 p#numMinesLabel {
   background-color: #ff0000;
-  padding: 7px 3px;
+  padding: 12px 10px;
 }
 
 div.space {
