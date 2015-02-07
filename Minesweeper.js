@@ -242,6 +242,13 @@ var board = {
 var numMines;
 
 function newGame() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      r = ("0" + String(i)).slice(-2);
+      c = ("0" + String(j)).slice(-2);
+      board["rc" + r + c] = 0;
+    }
+  }
   numMines = prompt("How many mines?");
   if(numMines < 1) {
     alert("Too few mines!");
@@ -258,6 +265,7 @@ function placeMine() {
   c = ("0" + String(Math.floor(Math.random() * 15 + 1))).slice(-2);
   if(board["rc" + r + c] == 0) {
     board["rc" + r + c] = 1;
+    return;
   }
   else {
     placeMine();
@@ -269,6 +277,22 @@ function placeMines() {
   }
 };
 
+function displayAll() {
+  //For debugging and testing
+  //Please don't cheat :P
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      r = ("0" + String(i)).slice(-2);
+      c = ("0" + String(j)).slice(-2);
+      $("#rc" + r + c + " p").html(String(board["rc" + r + c]));
+      if(board["rc" + r + c] == 0) {
+        $("#rc" + r + c + " p").html("&nbsp;");
+      }
+    }
+  }
+}
+
 $("#new").click(function() {
   newGame();
+  displayAll();
 });
