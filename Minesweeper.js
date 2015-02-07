@@ -303,12 +303,16 @@ $("#new").click(function() {
 $("div.space").click(function() {
   spot = $(this).attr("id");
   if(board[spot] == null) {
+    alert("You need to start a game first!");
     return;
   }
   if(board[spot] == 1) {
+    alert("That's a mine! OH NO!!!");
+    gameOver();
     return;
   }
   if(board[spot] == 0) {
+    safeClick();
     return;
   }
 });
