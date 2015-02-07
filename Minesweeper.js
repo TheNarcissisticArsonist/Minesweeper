@@ -268,3 +268,7 @@ function placeMines() {
     placeMine();
   }
 };
+
+$("#new").click(function() {
+  newGame();
+});
