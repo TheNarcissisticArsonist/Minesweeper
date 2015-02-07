@@ -239,3 +239,19 @@ var board = {
   rc1514 = 0;
   rc1515 = 0;
 }
+
+function newGame() {
+  numMines = prompt("How many mines?");
+  if(numMines < 1) {
+    alert("Too few mines!");
+    return;
+  }
+  if(numMines > 224) {
+    alert("Too many mines!");
+    return;
+  }
+  placeMines();
+};
+function placeMines() {
+
+};
