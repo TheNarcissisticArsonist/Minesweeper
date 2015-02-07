@@ -242,6 +242,10 @@ var board = {
 var numMines;
 
 function newGame() {
+  numMines = prompt("How many mines?");
+  if(numMines == null) {
+    return;
+  }
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       r = ("0" + String(i)).slice(-2);
@@ -249,7 +253,6 @@ function newGame() {
       board["rc" + r + c] = 0;
     }
   }
-  numMines = prompt("How many mines?");
   if(numMines < 1) {
     alert("Too few mines!");
     return;
@@ -278,7 +281,7 @@ function placeMines() {
 };
 
 function displayAll() {
-  //For debugging and testing
+  //For debugging and testing, this displays the locations of mines
   //Please don't cheat :P
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
