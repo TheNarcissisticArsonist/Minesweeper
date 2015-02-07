@@ -307,6 +307,16 @@ function gameOver() {
     }
   }
 }
+function safeClick(where) {
+  r = Number(where.slice(2, 4));
+  c = Number(where.slice(4, 6));
+}
+function toRC(r, c) {
+  return "rc" + ("0" + String(r)).slice(-2) + ("0" + String(c)).slice(-2);
+}
+function checkIfSafe(where) {
+  
+}
 
 $("#new").click(function() {
   newGame();
@@ -325,7 +335,7 @@ $("div.space").click(function() {
     return;
   }
   if(board[spot] == 0) {
-    safeClick();
+    safeClick(spot);
     return;
   }
 });
