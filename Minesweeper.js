@@ -279,7 +279,6 @@ function placeMines() {
     placeMine();
   }
 };
-
 function displayAll() {
   //For debugging and testing, this displays the locations of mines
   //Please don't cheat :P
@@ -287,10 +286,24 @@ function displayAll() {
     for(j=1; j<=15; j++) {
       r = ("0" + String(i)).slice(-2);
       c = ("0" + String(j)).slice(-2);
-      $("#rc" + r + c + " p").html(String(board["rc" + r + c]));
+      if(board["rc" + r + c] !== null) {
+        $("#rc" + r + c + " p").html(String(board["rc" + r + c]));
+      }
       if(board["rc" + r + c] == 0) {
         $("#rc" + r + c + " p").html("&nbsp;");
       }
+    }
+  }
+}
+function gameOver() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      r = ("0" + String(i)).slice(-2);
+      c = ("0" + String(j)).slice(-2);
+      if(board["rc" + r + c] == 1) {
+        $("#rc" + r + c + " p").html("X");
+      }
+      board["rc" + r + c] = null;
     }
   }
 }
@@ -303,7 +316,7 @@ $("#new").click(function() {
 $("div.space").click(function() {
   spot = $(this).attr("id");
   if(board[spot] == null) {
-    alert("You need to start a game first!");
+    alert("You need to start a new game!");
     return;
   }
   if(board[spot] == 1) {
