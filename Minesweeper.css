@@ -28,3 +28,14 @@ p#numMinesLabel {
   background-color: #ff0000;
   padding: 7px 3px;
 }
+
+div.space {
+  background-color: #dddddd;
+  width: 30px;
+  height: 30px;
+  margin: 1px -1px;
+  text-align: center;
+}
+div.space p {
+  padding: 7px 0px;
+}
