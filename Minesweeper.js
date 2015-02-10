@@ -814,16 +814,7 @@ function leftClick(rc) {
     return;
   }
   if(board[rc] == 0) {
-    if(count[rc] == 0) {
-      checkNextIfZero(rc);
-    }
     $("#" + rc + " p").html(String(count[rc]));
-    for(i=1; i<=15; i++) {
-      for(j=1; j<=15; j++) {
-        rc = toRC(i, j);
-        searched[rc] = false;
-      }
-    }
     return;
   }
 }
@@ -844,21 +835,6 @@ function flag(rc) {
     if(cont == "?") {
       $("#" + rc + " p").html("&nbsp;");
       return;
-    }
-  }
-}
-function checkNextIfZero(rc) {
-  $("#" + rc + " p").html("0");
-  searched[rc] = true;
-  r = Number(rc.slice(2, 4));
-  c = Number(rc.slice(4, 6));
-  toSearch = [toRC(r+1, c+1), toRC(r+1, c), toRC(r+1, c-1), toRC(r, c+1), toRC(r, c-1), toRC(r-1, c+1), toRC(r-1, c), toRC(r-1, c-1)];
-  for(i=0; i<toSearch.length; i++) {
-    if(count[toSearch[i]] == 0 && !searched[toSearch[i]]) {
-      checkNextIfZero(toSearch[i]);
-    }
-    else if(count[toSearch[i]] != 0 && !searched[toSearch[i]]) {
-      $("#" + toSearch[i] + " p").html(count[toSearch[i]]);
     }
   }
 }
