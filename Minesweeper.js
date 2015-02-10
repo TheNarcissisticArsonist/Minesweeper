@@ -826,10 +826,10 @@ function flag(rc) {
   else {
     minecount = Number($("#numMines p").html());
     if(cont == "&nbsp;") {
-      $("#" + rc + " p").html("+");
+      $("#" + rc + " p").html("X");
       minecount--;
     }
-    if(cont == "+") {
+    if(cont == "X") {
       $("#" + rc + " p").html("?");
       minecount++;
     }
