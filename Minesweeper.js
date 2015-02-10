@@ -824,18 +824,19 @@ function flag(rc) {
     return;
   }
   else {
+    minecount = Number($("#numMines p").html());
     if(cont == "&nbsp;") {
       $("#" + rc + " p").html("+");
-      return;
+      minecount--;
     }
     if(cont == "+") {
       $("#" + rc + " p").html("?");
-      return;
+      minecount++;
     }
     if(cont == "?") {
       $("#" + rc + " p").html("&nbsp;");
-      return;
     }
+    $("#numMines p").html(String(minecount));
   }
 }
 
