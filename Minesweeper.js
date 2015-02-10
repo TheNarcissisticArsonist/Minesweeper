@@ -495,6 +495,7 @@ function newGame() {
     alert("Too many mines!");
     return;
   }
+  $("#numMines p").html(String(numMines));
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
