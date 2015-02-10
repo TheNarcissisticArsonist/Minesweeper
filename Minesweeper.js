@@ -565,26 +565,54 @@ function loadCount() {
     }
   }
 }
+function leftClick(rc) {
+  if(board[rc] == null) {
+    alert("You need to start a new game!");
+    return;
+  }
+  if(board[rc] == 1) {
+    alert("That's a mine! OH NO!!!");
+    gameOver();
+    $("#" + rc + " p").css("color", "red");
+    return;
+  }
+  if(board[rc] == 0) {
+    $("#" + rc + " p").html(String(count[rc]));
+    return;
+  }
+}
+function flag(rc) {
+  cont = $("#" + rc + " p").html();
+  if(Number(cont)) {
+    return;
+  }
+  else {
+    if(cont == "&nbsp;") {
+      $("#" + rc + " p").html("+");
+      return;
+    }
+    if(cont == "+") {
+      $("#" + rc + " p").html("?");
+      return;
+    }
+    if(cont == "?") {
+      $("#" + rc + " p").html("&nbsp;");
+      return;
+    }
+  }
+}
 
 $("#new").click(function() {
   newGame();
   displayAll();
 });
 
-$("div.space").click(function() {
+$("div.space").mousedown(function(event) {
   spot = $(this).attr("id");
-  if(board[spot] == null) {
-    alert("You need to start a new game!");
-    return;
+  if(event.which == 1) {
+    leftClick(spot);
   }
-  if(board[spot] == 1) {
-    alert("That's a mine! OH NO!!!");
-    gameOver();
-    $("#" + spot + " p").css("color", "red");
-    return;
-  }
-  if(board[spot] == 0) {
-    $("#" + spot + " p").html(String(count[spot]));
-    return;
+  if(event.which == 3) {
+    flag(spot);
   }
 });
