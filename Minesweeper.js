@@ -566,10 +566,6 @@ function loadCount() {
   }
 }
 function leftClick(rc) {
-  if(board[rc] == null) {
-    alert("You need to start a new game!");
-    return;
-  }
   if(board[rc] == 1) {
     alert("That's a mine! OH NO!!!");
     gameOver();
@@ -608,6 +604,10 @@ $("#new").click(function() {
 });
 
 $("div.space").mousedown(function(event) {
+  if(board[rc] == null) {
+    alert("You need to start a new game!");
+    return;
+  }
   spot = $(this).attr("id");
   if(event.which == 1) {
     leftClick(spot);
