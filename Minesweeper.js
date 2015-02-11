@@ -808,47 +808,49 @@ function loadCount() {
   }
 }
 function leftClick(rc) {
+  console.log(rc);
   if(board[rc] == 1) {
     alert("That's a mine! OH NO!!!");
     gameOver();
     $("#" + rc + " p").css("color", "red");
-    return;
   }
   if(board[rc] == 0) {
     $("#" + rc + " p").html(String(count[rc]));
-    switch(count[rc]) {
-      case 0:
-        $("#" + rc + " p").css("color", "#dddddd");
-        break;
-      case 1:
-        $("#" + rc + " p").css("color", "#0066ff");
-        break;
-      case 2:
-        $("#" + rc + " p").css("color", "#006B24");
-        break;
-      case 3:
-        $("#" + rc + " p").css("color", "#ff0000");
-        break;
-      case 4:
-        $("#" + rc + " p").css("color", "#333399");
-        break;
-      case 5:
-        $("#" + rc + " p").css("color", "#993300");
-        break;
-      case 6:
-        $("#" + rc + " p").css("color", "#ff3399");
-        break;
-      case 7:
-        $("#" + rc + " p").css("color", "#660033");
-        break;
-      case 8:
-        $("#" + rc + " p").css("color", "#660066");
-        break;
-      default:
-        $("#" + rc + " p").css("color", "#000000");
-        break;
-    }
-    return;
+    color(rc);
+  }
+}
+function color(rc) {
+  switch(count[rc]) {
+    /*case 0:
+      $("#" + rc + " p").css("color", "#dddddd");
+      break;*/
+    case 1:
+      $("#" + rc + " p").css("color", "#0066ff");
+      break;
+    case 2:
+      $("#" + rc + " p").css("color", "#006B24");
+      break;
+    case 3:
+      $("#" + rc + " p").css("color", "#ff0000");
+      break;
+    case 4:
+      $("#" + rc + " p").css("color", "#333399");
+      break;
+    case 5:
+      $("#" + rc + " p").css("color", "#993300");
+      break;
+    case 6:
+      $("#" + rc + " p").css("color", "#ff3399");
+      break;
+    case 7:
+      $("#" + rc + " p").css("color", "#660033");
+      break;
+    case 8:
+      $("#" + rc + " p").css("color", "#660066");
+      break;
+    default:
+      $("#" + rc + " p").css("color", "#000000");
+      break;
   }
 }
 function flag(rc) {
