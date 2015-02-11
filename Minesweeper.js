@@ -815,6 +815,14 @@ function leftClick(rc) {
   }
   if(board[rc] == 0) {
     $("#" + rc + " p").html(String(count[rc]));
+    switch(count[rc]) {
+      case 0:
+        $("#" + rc + " p").css("color", "#dddddd");
+        break;
+      case 1:
+        $("#" + rc + " p").css("color", "#0000dd");
+        break;
+    }
     return;
   }
 }
