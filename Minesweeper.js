@@ -770,13 +770,14 @@ function displayAll() {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
       if(board[rc] !== null) {
-        $("#" + rc + " p").html(String(board["rc" + r + c]));
+        $("#" + rc + " p").html(String(board["rc" + i + j]));
       }
       if(board[rc] == 0) {
         $("#" + rc + " p").html("&nbsp;");
       }
     }
   }
+  alert("displayall");
 }
 function gameOver() {
   for(i=1; i<=15; i++) {
@@ -874,7 +875,6 @@ function flag(rc) {
 
 $("#new").click(function() {
   newGame();
-  displayAll();
 });
 
 $("div.space").mousedown(function(event) {
@@ -889,4 +889,18 @@ $("div.space").mousedown(function(event) {
   if(event.which == 3) {
     flag(spot);
   }
+});
+$("div.space").mouseenter(function() {
+  div = $(this).attr("id");
+  $("#" + div).css("width", "26px");
+  $("#" + div).css("height", "26px");
+  $("#" + div + " p").css("padding", "5px 0px");
+  $("#" + div).css("border", "2px solid #0000cc");
+});
+$("div.space").mouseleave(function() {
+  div = $(this).attr("id");
+  $("#" + div).css("width", "30px");
+  $("#" + div).css("height", "30px");
+  $("#" + div + " p").css("padding", "7px 0px");
+  $("#" + div).css("border", "0px");
 });
