@@ -878,11 +878,11 @@ $("#new").click(function() {
 });
 
 $("div.space").mousedown(function(event) {
-  if(board[rc] == null) {
+  spot = $(this).attr("id");
+  if(board[spot] == null) {
     alert("You need to start a new game!");
     return;
   }
-  spot = $(this).attr("id");
   if(event.which == 1) {
     leftClick(spot);
   }
