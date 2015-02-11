@@ -725,7 +725,7 @@ var numMines;
 
 function newGame() {
   numMines = prompt("How many mines?");
-  if(numMines == null) {
+  if(numMines == "") {
     return;
   }
   if(numMines < 1) {
