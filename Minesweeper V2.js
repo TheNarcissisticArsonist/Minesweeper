@@ -721,3 +721,22 @@ var searched = {
   rc1514: false,
   rc1515: false
 }
+
+function startNewGame() {
+  numMines = prompt("How many mines do you want?");
+  if(numMines == null) {
+    return;
+  }
+  else if(numMines > 200) {
+    alert("That's too many mines!");
+  }
+  else if(numMines < 10) {
+    alert("That's too few mines!");
+  }
+  else if(10 <= numMines && numMines <= 200) {
+    placeMines(numMines);
+  }
+  else {
+    alert("Please only enter numbers!");
+  }
+}
