@@ -740,3 +740,8 @@ function startNewGame() {
     alert("Please only enter numbers!");
   }
 }
+function placeMines(m) {
+  for(i=0; i<m; i++) {
+    placeMine();
+  }
+}
