@@ -1,0 +1,24 @@
+mine location object
+number of bordering mines object
+searched object (for propagation when clicking a zero)
+
+function newGame
+ '-> function placeMine
+ '-> function placeMines(number of mines)
+function leftClick(where)
+ '-> if(zero) -> propagate
+function rightClick(where)
+ '-> updateNumMines
+
+function toRC
+function updateNumMines
+function addColor
+function gameOver
+
+function displayAll
+
+newGame.click
+board.leftclick
+board.rightclick
+board.mouseenter
+board.mouseleave
