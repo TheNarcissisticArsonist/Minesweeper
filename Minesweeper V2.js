@@ -757,3 +757,9 @@ function placeMine() {
     return;
   }
 }
+
+function toRC(r, c) {
+  newR = ("0" + String(r)).slice(-2);
+  newC = ("0" + String(c)).slice(-2);
+  return "rc" + newR + newC;
+}
