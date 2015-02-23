@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Minesweeper.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="new"><p>New Game</p></div>
+
+<br><br><br>
+
+<p id="numMinesLabel">Number of mines:</p><div id="numMines"><p>0</p></div>
+
+<br><br>
+
+<div id="gameBoard">
+
+<div class="space" id="rc0101"><p>&nbsp;</p></div>
+<div class="space" id="rc0102"><p>&nbsp;</p></div>
+<div class="space" id="rc0103"><p>&nbsp;</p></div>
+<div class="space" id="rc0104"><p>&nbsp;</p></div>
+<div class="space" id="rc0105"><p>&nbsp;</p></div>
+<div class="space" id="rc0106"><p>&nbsp;</p></div>
+<div class="space" id="rc0107"><p>&nbsp;</p></div>
+<div class="space" id="rc0108"><p>&nbsp;</p></div>
+<div class="space" id="rc0109"><p>&nbsp;</p></div>
+<div class="space" id="rc0110"><p>&nbsp;</p></div>
+<div class="space" id="rc0111"><p>&nbsp;</p></div>
+<div class="space" id="rc0112"><p>&nbsp;</p></div>
+<div class="space" id="rc0113"><p>&nbsp;</p></div>
+<div class="space" id="rc0114"><p>&nbsp;</p></div>
+<div class="space" id="rc0115"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0201"><p>&nbsp;</p></div>
+<div class="space" id="rc0202"><p>&nbsp;</p></div>
+<div class="space" id="rc0203"><p>&nbsp;</p></div>
+<div class="space" id="rc0204"><p>&nbsp;</p></div>
+<div class="space" id="rc0205"><p>&nbsp;</p></div>
+<div class="space" id="rc0206"><p>&nbsp;</p></div>
+<div class="space" id="rc0207"><p>&nbsp;</p></div>
+<div class="space" id="rc0208"><p>&nbsp;</p></div>
+<div class="space" id="rc0209"><p>&nbsp;</p></div>
+<div class="space" id="rc0210"><p>&nbsp;</p></div>
+<div class="space" id="rc0211"><p>&nbsp;</p></div>
+<div class="space" id="rc0212"><p>&nbsp;</p></div>
+<div class="space" id="rc0213"><p>&nbsp;</p></div>
+<div class="space" id="rc0214"><p>&nbsp;</p></div>
+<div class="space" id="rc0215"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0301"><p>&nbsp;</p></div>
+<div class="space" id="rc0302"><p>&nbsp;</p></div>
+<div class="space" id="rc0303"><p>&nbsp;</p></div>
+<div class="space" id="rc0304"><p>&nbsp;</p></div>
+<div class="space" id="rc0305"><p>&nbsp;</p></div>
+<div class="space" id="rc0306"><p>&nbsp;</p></div>
+<div class="space" id="rc0307"><p>&nbsp;</p></div>
+<div class="space" id="rc0308"><p>&nbsp;</p></div>
+<div class="space" id="rc0309"><p>&nbsp;</p></div>
+<div class="space" id="rc0310"><p>&nbsp;</p></div>
+<div class="space" id="rc0311"><p>&nbsp;</p></div>
+<div class="space" id="rc0312"><p>&nbsp;</p></div>
+<div class="space" id="rc0313"><p>&nbsp;</p></div>
+<div class="space" id="rc0314"><p>&nbsp;</p></div>
+<div class="space" id="rc0315"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0401"><p>&nbsp;</p></div>
+<div class="space" id="rc0402"><p>&nbsp;</p></div>
+<div class="space" id="rc0403"><p>&nbsp;</p></div>
+<div class="space" id="rc0404"><p>&nbsp;</p></div>
+<div class="space" id="rc0405"><p>&nbsp;</p></div>
+<div class="space" id="rc0406"><p>&nbsp;</p></div>
+<div class="space" id="rc0407"><p>&nbsp;</p></div>
+<div class="space" id="rc0408"><p>&nbsp;</p></div>
+<div class="space" id="rc0409"><p>&nbsp;</p></div>
+<div class="space" id="rc0410"><p>&nbsp;</p></div>
+<div class="space" id="rc0411"><p>&nbsp;</p></div>
+<div class="space" id="rc0412"><p>&nbsp;</p></div>
+<div class="space" id="rc0413"><p>&nbsp;</p></div>
+<div class="space" id="rc0414"><p>&nbsp;</p></div>
+<div class="space" id="rc0415"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0501"><p>&nbsp;</p></div>
+<div class="space" id="rc0502"><p>&nbsp;</p></div>
+<div class="space" id="rc0503"><p>&nbsp;</p></div>
+<div class="space" id="rc0504"><p>&nbsp;</p></div>
+<div class="space" id="rc0505"><p>&nbsp;</p></div>
+<div class="space" id="rc0506"><p>&nbsp;</p></div>
+<div class="space" id="rc0507"><p>&nbsp;</p></div>
+<div class="space" id="rc0508"><p>&nbsp;</p></div>
+<div class="space" id="rc0509"><p>&nbsp;</p></div>
+<div class="space" id="rc0510"><p>&nbsp;</p></div>
+<div class="space" id="rc0511"><p>&nbsp;</p></div>
+<div class="space" id="rc0512"><p>&nbsp;</p></div>
+<div class="space" id="rc0513"><p>&nbsp;</p></div>
+<div class="space" id="rc0514"><p>&nbsp;</p></div>
+<div class="space" id="rc0515"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0601"><p>&nbsp;</p></div>
+<div class="space" id="rc0602"><p>&nbsp;</p></div>
+<div class="space" id="rc0603"><p>&nbsp;</p></div>
+<div class="space" id="rc0604"><p>&nbsp;</p></div>
+<div class="space" id="rc0605"><p>&nbsp;</p></div>
+<div class="space" id="rc0606"><p>&nbsp;</p></div>
+<div class="space" id="rc0607"><p>&nbsp;</p></div>
+<div class="space" id="rc0608"><p>&nbsp;</p></div>
+<div class="space" id="rc0609"><p>&nbsp;</p></div>
+<div class="space" id="rc0610"><p>&nbsp;</p></div>
+<div class="space" id="rc0611"><p>&nbsp;</p></div>
+<div class="space" id="rc0612"><p>&nbsp;</p></div>
+<div class="space" id="rc0613"><p>&nbsp;</p></div>
+<div class="space" id="rc0614"><p>&nbsp;</p></div>
+<div class="space" id="rc0615"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0701"><p>&nbsp;</p></div>
+<div class="space" id="rc0702"><p>&nbsp;</p></div>
+<div class="space" id="rc0703"><p>&nbsp;</p></div>
+<div class="space" id="rc0704"><p>&nbsp;</p></div>
+<div class="space" id="rc0705"><p>&nbsp;</p></div>
+<div class="space" id="rc0706"><p>&nbsp;</p></div>
+<div class="space" id="rc0707"><p>&nbsp;</p></div>
+<div class="space" id="rc0708"><p>&nbsp;</p></div>
+<div class="space" id="rc0709"><p>&nbsp;</p></div>
+<div class="space" id="rc0710"><p>&nbsp;</p></div>
+<div class="space" id="rc0711"><p>&nbsp;</p></div>
+<div class="space" id="rc0712"><p>&nbsp;</p></div>
+<div class="space" id="rc0713"><p>&nbsp;</p></div>
+<div class="space" id="rc0714"><p>&nbsp;</p></div>
+<div class="space" id="rc0715"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0801"><p>&nbsp;</p></div>
+<div class="space" id="rc0802"><p>&nbsp;</p></div>
+<div class="space" id="rc0803"><p>&nbsp;</p></div>
+<div class="space" id="rc0804"><p>&nbsp;</p></div>
+<div class="space" id="rc0805"><p>&nbsp;</p></div>
+<div class="space" id="rc0806"><p>&nbsp;</p></div>
+<div class="space" id="rc0807"><p>&nbsp;</p></div>
+<div class="space" id="rc0808"><p>&nbsp;</p></div>
+<div class="space" id="rc0809"><p>&nbsp;</p></div>
+<div class="space" id="rc0810"><p>&nbsp;</p></div>
+<div class="space" id="rc0811"><p>&nbsp;</p></div>
+<div class="space" id="rc0812"><p>&nbsp;</p></div>
+<div class="space" id="rc0813"><p>&nbsp;</p></div>
+<div class="space" id="rc0814"><p>&nbsp;</p></div>
+<div class="space" id="rc0815"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc0901"><p>&nbsp;</p></div>
+<div class="space" id="rc0902"><p>&nbsp;</p></div>
+<div class="space" id="rc0903"><p>&nbsp;</p></div>
+<div class="space" id="rc0904"><p>&nbsp;</p></div>
+<div class="space" id="rc0905"><p>&nbsp;</p></div>
+<div class="space" id="rc0906"><p>&nbsp;</p></div>
+<div class="space" id="rc0907"><p>&nbsp;</p></div>
+<div class="space" id="rc0908"><p>&nbsp;</p></div>
+<div class="space" id="rc0909"><p>&nbsp;</p></div>
+<div class="space" id="rc0910"><p>&nbsp;</p></div>
+<div class="space" id="rc0911"><p>&nbsp;</p></div>
+<div class="space" id="rc0912"><p>&nbsp;</p></div>
+<div class="space" id="rc0913"><p>&nbsp;</p></div>
+<div class="space" id="rc0914"><p>&nbsp;</p></div>
+<div class="space" id="rc0915"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1001"><p>&nbsp;</p></div>
+<div class="space" id="rc1002"><p>&nbsp;</p></div>
+<div class="space" id="rc1003"><p>&nbsp;</p></div>
+<div class="space" id="rc1004"><p>&nbsp;</p></div>
+<div class="space" id="rc1005"><p>&nbsp;</p></div>
+<div class="space" id="rc1006"><p>&nbsp;</p></div>
+<div class="space" id="rc1007"><p>&nbsp;</p></div>
+<div class="space" id="rc1008"><p>&nbsp;</p></div>
+<div class="space" id="rc1009"><p>&nbsp;</p></div>
+<div class="space" id="rc1010"><p>&nbsp;</p></div>
+<div class="space" id="rc1011"><p>&nbsp;</p></div>
+<div class="space" id="rc1012"><p>&nbsp;</p></div>
+<div class="space" id="rc1013"><p>&nbsp;</p></div>
+<div class="space" id="rc1014"><p>&nbsp;</p></div>
+<div class="space" id="rc1015"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1101"><p>&nbsp;</p></div>
+<div class="space" id="rc1102"><p>&nbsp;</p></div>
+<div class="space" id="rc1103"><p>&nbsp;</p></div>
+<div class="space" id="rc1104"><p>&nbsp;</p></div>
+<div class="space" id="rc1105"><p>&nbsp;</p></div>
+<div class="space" id="rc1106"><p>&nbsp;</p></div>
+<div class="space" id="rc1107"><p>&nbsp;</p></div>
+<div class="space" id="rc1108"><p>&nbsp;</p></div>
+<div class="space" id="rc1109"><p>&nbsp;</p></div>
+<div class="space" id="rc1110"><p>&nbsp;</p></div>
+<div class="space" id="rc1111"><p>&nbsp;</p></div>
+<div class="space" id="rc1112"><p>&nbsp;</p></div>
+<div class="space" id="rc1113"><p>&nbsp;</p></div>
+<div class="space" id="rc1114"><p>&nbsp;</p></div>
+<div class="space" id="rc1115"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1201"><p>&nbsp;</p></div>
+<div class="space" id="rc1202"><p>&nbsp;</p></div>
+<div class="space" id="rc1203"><p>&nbsp;</p></div>
+<div class="space" id="rc1204"><p>&nbsp;</p></div>
+<div class="space" id="rc1205"><p>&nbsp;</p></div>
+<div class="space" id="rc1206"><p>&nbsp;</p></div>
+<div class="space" id="rc1207"><p>&nbsp;</p></div>
+<div class="space" id="rc1208"><p>&nbsp;</p></div>
+<div class="space" id="rc1209"><p>&nbsp;</p></div>
+<div class="space" id="rc1210"><p>&nbsp;</p></div>
+<div class="space" id="rc1211"><p>&nbsp;</p></div>
+<div class="space" id="rc1212"><p>&nbsp;</p></div>
+<div class="space" id="rc1213"><p>&nbsp;</p></div>
+<div class="space" id="rc1214"><p>&nbsp;</p></div>
+<div class="space" id="rc1215"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1301"><p>&nbsp;</p></div>
+<div class="space" id="rc1302"><p>&nbsp;</p></div>
+<div class="space" id="rc1303"><p>&nbsp;</p></div>
+<div class="space" id="rc1304"><p>&nbsp;</p></div>
+<div class="space" id="rc1305"><p>&nbsp;</p></div>
+<div class="space" id="rc1306"><p>&nbsp;</p></div>
+<div class="space" id="rc1307"><p>&nbsp;</p></div>
+<div class="space" id="rc1308"><p>&nbsp;</p></div>
+<div class="space" id="rc1309"><p>&nbsp;</p></div>
+<div class="space" id="rc1310"><p>&nbsp;</p></div>
+<div class="space" id="rc1311"><p>&nbsp;</p></div>
+<div class="space" id="rc1312"><p>&nbsp;</p></div>
+<div class="space" id="rc1313"><p>&nbsp;</p></div>
+<div class="space" id="rc1314"><p>&nbsp;</p></div>
+<div class="space" id="rc1315"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1401"><p>&nbsp;</p></div>
+<div class="space" id="rc1402"><p>&nbsp;</p></div>
+<div class="space" id="rc1403"><p>&nbsp;</p></div>
+<div class="space" id="rc1404"><p>&nbsp;</p></div>
+<div class="space" id="rc1405"><p>&nbsp;</p></div>
+<div class="space" id="rc1406"><p>&nbsp;</p></div>
+<div class="space" id="rc1407"><p>&nbsp;</p></div>
+<div class="space" id="rc1408"><p>&nbsp;</p></div>
+<div class="space" id="rc1409"><p>&nbsp;</p></div>
+<div class="space" id="rc1410"><p>&nbsp;</p></div>
+<div class="space" id="rc1411"><p>&nbsp;</p></div>
+<div class="space" id="rc1412"><p>&nbsp;</p></div>
+<div class="space" id="rc1413"><p>&nbsp;</p></div>
+<div class="space" id="rc1414"><p>&nbsp;</p></div>
+<div class="space" id="rc1415"><p>&nbsp;</p></div>
+<br>
+
+<div class="space" id="rc1501"><p>&nbsp;</p></div>
+<div class="space" id="rc1502"><p>&nbsp;</p></div>
+<div class="space" id="rc1503"><p>&nbsp;</p></div>
+<div class="space" id="rc1504"><p>&nbsp;</p></div>
+<div class="space" id="rc1505"><p>&nbsp;</p></div>
+<div class="space" id="rc1506"><p>&nbsp;</p></div>
+<div class="space" id="rc1507"><p>&nbsp;</p></div>
+<div class="space" id="rc1508"><p>&nbsp;</p></div>
+<div class="space" id="rc1509"><p>&nbsp;</p></div>
+<div class="space" id="rc1510"><p>&nbsp;</p></div>
+<div class="space" id="rc1511"><p>&nbsp;</p></div>
+<div class="space" id="rc1512"><p>&nbsp;</p></div>
+<div class="space" id="rc1513"><p>&nbsp;</p></div>
+<div class="space" id="rc1514"><p>&nbsp;</p></div>
+<div class="space" id="rc1515"><p>&nbsp;</p></div>
+<br>
+
+</div>
+
+<script type="text/javascript" src="Minesweeper.js"></script>
+</body>
+</html>
