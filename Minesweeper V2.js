@@ -745,3 +745,15 @@ function placeMines(m) {
     placeMine();
   }
 }
+function placeMine() {
+  r = Math.floor(Math.random() * 15 + 1);
+  c = Math.floor(Math.random() * 15 + 1);
+  rc = toRC(r, c);
+  if(mines[rc] == true) {
+    placeMine();
+  }
+  else if(mines[rc] == false || mines[rc] == null) {
+    mines[rc] = true;
+    return;
+  }
+}
