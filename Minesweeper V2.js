@@ -735,6 +735,7 @@ function startNewGame() {
   }
   else if(10 <= numMines && numMines <= 200) {
     placeMines(numMines);
+    loadCount();
   }
   else {
     alert("Please only enter numbers!");
@@ -757,9 +758,37 @@ function placeMine() {
     return;
   }
 }
+function loadCount() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      m = 0;
+      toSearch = [
+        toRC(i+1, j+1),
+        toRC(i+1, j),
+        toRC(i+1, j-1),
+        toRC(i, j+1),
+        toRC(i, j-1),
+        toRC(i-1, j+1),
+        toRC(i-1, j),
+        toRC(i-1, j-1)
+      ]
+      for(k=0; k<8; k++) {
+        if(mines[toSearch[k]] == true) {
+          m++;
+        }
+      }
+      count[rc] = m;
+    }
+  }
+}
 
 function toRC(r, c) {
   newR = ("0" + String(r)).slice(-2);
   newC = ("0" + String(c)).slice(-2);
   return "rc" + newR + newC;
 }
+
+startNewGame();
+console.log(mines);
+console.log(count);
