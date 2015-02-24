@@ -745,6 +745,14 @@ function placeMines(m) {
   for(i=0; i<m; i++) {
     placeMine();
   }
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      if(mines[rc] == null) {
+        mines[rc] = false;
+      }
+    }
+  }
 }
 function placeMine() {
   r = Math.floor(Math.random() * 15 + 1);
