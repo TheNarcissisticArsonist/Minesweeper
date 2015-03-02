@@ -886,7 +886,7 @@ function endGame(spot) {
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
-      board[rc] = null;
+      mines[rc] = null;
       count[rc] = null;
     }
   }
