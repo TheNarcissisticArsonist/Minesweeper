@@ -859,6 +859,24 @@ function displayMineCountOnBoard() {
   }
 }
 
+function updateNumMines() {
+  flag = 0;
+  total = 0;
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      if(mines[rc]) {
+        total++;
+      }
+      temp = $("#" + rc + " p").html();
+      if(temp == "+") {
+        flag++;
+      }
+    }
+  }
+  $("#numMines p").html(String(total-flag));
+}
+
 $("#new").click(function() {
   startNewGame();
 });
