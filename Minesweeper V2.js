@@ -885,4 +885,8 @@ $(".space").click(function() {
   rcString = $(this).attr("id");
   r = Number(rcString.slice(2, 4));
   c = Number(rcString.slice(4, 6));
+  rc = toRC(r, c);
+  if(mines[rc] == null || count[rc] == null) {
+    return;
+  }
 });
