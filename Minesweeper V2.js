@@ -978,6 +978,9 @@ $(".space").hover(function() {
   whereAmI = rc;
 });
 $(document).keydown(function(event) {
+  if(mines[whereAmI] == null || count[whereAmI] == null) {
+    return;
+  }
   if(event.which == 32) {
     cont = $("#" + whereAmI + " p").html();
     if(cont == "&nbsp;") {
