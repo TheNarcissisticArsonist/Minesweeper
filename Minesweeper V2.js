@@ -803,6 +803,7 @@ function clearBoard() {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
+      searched[rc] = false;
       $("#" + rc).css("background-color", "#dddddd");
       $("#" + rc + " p").css("color", "black").html("&nbsp;");
     }
@@ -890,6 +891,10 @@ function endGame(spot) {
       count[rc] = null;
     }
   }
+  $("#" + spot).css("width", "30px");
+  $("#" + spot).css("height", "30px");
+  $("#" + spot + " p").css("padding", "7px 0px");
+  $("#" + spot).css("border", "0px");
 }
 function safeLeftClick(spot) {
   switch(count[spot]) {
