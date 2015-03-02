@@ -1044,7 +1044,7 @@ $(document).keydown(function(event) {
   numMines = Number($("#numMines p").html());
   if(event.which == 32) {
     cont = $("#" + whereAmI + " p").html();
-    if(cont == "&nbsp;") {
+    if(cont == "&nbsp;" && count[whereAmI] != 0) {
       $("#" + whereAmI + " p").html("+").css("color", "red");
       numMines--;
     }
