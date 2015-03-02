@@ -975,6 +975,10 @@ function win() {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
+      $("#" + rc).css("width", "30px");
+      $("#" + rc).css("height", "30px");
+      $("#" + rc + " p").css("padding", "7px 0px");
+      $("#" + rc).css("border", "0px");
     }
   }
 }
