@@ -740,6 +740,8 @@ function startNewGame() {
   else {
     alert("Please only enter numbers!");
   }
+  displayMinesOnBoard();
+  displayMineCountOnBoard();
 }
 function placeMines(m) {
   for(i=0; i<m; i++) {
@@ -813,7 +815,6 @@ function displayMinesOnBoard() {
     }
   }
 }
-
 function displayMineCountOnBoard() {
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
@@ -860,7 +861,3 @@ function displayMineCountOnBoard() {
 }
 
 startNewGame();
-console.log(mines);
-console.log(count);
-displayMinesOnBoard();
-displayMineCountOnBoard();
