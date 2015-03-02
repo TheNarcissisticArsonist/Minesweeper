@@ -734,6 +734,7 @@ function startNewGame() {
     alert("That's too few mines!");
   }
   else if(10 <= numMines && numMines <= 200) {
+    clearBoard();
     placeMines(numMines);
     loadCount();
   }
@@ -792,6 +793,15 @@ function loadCount() {
       if(mines[rc] == true) {
         count[rc] = 0;
       }
+    }
+  }
+}
+function clearBoard() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      mines[rc] = null;
+      count[rc] = null;
     }
   }
 }
