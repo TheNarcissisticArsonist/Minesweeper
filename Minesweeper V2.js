@@ -741,7 +741,6 @@ function startNewGame() {
   else {
     alert("Please only enter numbers!");
   }
-  displayMinesOnBoard();
   displayMineCountOnBoard();
 }
 function placeMines(m) {
@@ -812,19 +811,6 @@ function toRC(r, c) {
   return "rc" + newR + newC;
 }
 
-function displayMinesOnBoard() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
-      rc = toRC(i, j);
-      if(mines[rc]) {
-        $("#" + rc + " p").html("X").css("color", "red");
-      }
-      else {
-        $("#" + rc + " p").html("&nbsp;").css("color", "black");
-      }
-    }
-  }
-}
 function displayMineCountOnBoard() {
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
