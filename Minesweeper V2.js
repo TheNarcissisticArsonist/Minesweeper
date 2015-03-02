@@ -821,9 +821,11 @@ function displayMineCountOnBoard() {
       rc = toRC(i, j);
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
+        $("#" + rc).css("background-color", "red");
       }
       else if(count[rc] == 0) {
         $("#" + rc + " p").html("&nbsp;").css("color", "black");
+        $("#" + rc).css("background-color", "#dddddd");
       }
       else {
         c = count[rc];
@@ -855,6 +857,7 @@ function displayMineCountOnBoard() {
             break;
         }
         $("#" + rc + " p").html(String(c)).css("color", color);
+        $("#" + rc).css("background-color", "#dddddd");
       }
     }
   }
