@@ -787,6 +787,9 @@ function loadCount() {
         }
       }
       count[rc] = m;
+      if(mines[rc] == true) {
+        count[rc] = 0;
+      }
     }
   }
 }
