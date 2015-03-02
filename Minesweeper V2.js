@@ -936,6 +936,11 @@ $(".space").click(function() {
     endGame(rc);
   }
   else {
-    safeLeftClick(rc);
+    if(count[rc] != 0) {
+      safeLeftClick(rc);
+    }
+    else {
+      zeroPropogate(rc);
+    }
   }
 });
