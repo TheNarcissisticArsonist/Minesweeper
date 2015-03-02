@@ -742,6 +742,7 @@ function startNewGame() {
     alert("Please only enter numbers!");
   }
   displayMineCountOnBoard();
+  updateNumMines();
 }
 function placeMines(m) {
   for(i=0; i<m; i++) {
