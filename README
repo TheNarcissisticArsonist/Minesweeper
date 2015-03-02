@@ -1,0 +1,14 @@
+Instructions:
+
+To start a new game, press the button that says new game.
+You can have between 10 and 200 mines. The recommended number is between 25 and 50.
+
+Left click to test a square. If it's a mine, you lose.
+If it's safe, it tells you how many mines it's touching, from 1 to 8.
+If it touches no mines, the entire region will open up.
+
+Press space while hovering over a square to flag it.
+Press space again to make it a question mark.
+Press space again to reset it.
+
+Find all the mines to win!
