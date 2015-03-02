@@ -814,8 +814,50 @@ function displayMinesOnBoard() {
   }
 }
 
+function displayMineCountOnBoard() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      if(mines[rc]) {
+        $("#" + rc + " p").html("X").css("color", "black");
+      }
+      else {
+        c = count[rc];
+        var color;
+        switch(count[rc]) {
+          case 1:
+            color = "blue";
+            break;
+          case 2:
+            color = "green";
+            break;
+          case 3:
+            color = "red";
+            break;
+          case 4:
+            color = "#0000ff";
+            break;
+          case 5:
+            color = "#993300";
+            break;
+          case 6:
+            color = "#6600ff";
+            break;
+          case 7:
+            color = "#cc33ff";
+            break;
+          case 8:
+            color = "#003300";
+            break;
+        }
+        $("#" + rc + " p").html(String(c)).css("color", color);
+      }
+    }
+  }
+}
 
 startNewGame();
 console.log(mines);
 console.log(count);
 displayMinesOnBoard();
+displayMineCountOnBoard();
