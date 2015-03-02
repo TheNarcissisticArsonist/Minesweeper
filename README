@@ -1,4 +1,11 @@
-Instructions:
+Open the HTML file in a web browser to run.
+Chrome definitely works, but I'm unsure about other browsers.
+
+If you don't have internet access, you'll have to use the file in the Offline-Mode folder, as it uses a local copy of the jQuery library.
+
+
+
+How to Play:
 
 To start a new game, press the button that says new game.
 You can have between 10 and 200 mines. The recommended number is between 25 and 50.
