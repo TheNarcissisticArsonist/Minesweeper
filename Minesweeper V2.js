@@ -800,6 +800,26 @@ function toRC(r, c) {
   return "rc" + newR + newC;
 }
 
+function displayMinesOnBoard() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      if(mines[rc]) {
+        $("#" + rc + " p").html("X");
+        $("#" + rc + " p").css("color", "red");
+      }
+      else {
+        $("#" + rc + " p").html("&nbsp;");
+        $("#" + rc + " p").css("color", "black");
+      }
+    }
+  }
+}
+function displayMineCountOnBoard() {
+
+}
+
 startNewGame();
 console.log(mines);
 console.log(count);
+displayMinesOnBoard();
