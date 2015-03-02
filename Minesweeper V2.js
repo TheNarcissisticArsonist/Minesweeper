@@ -951,12 +951,15 @@ function checkForWin() {
       rc = toRC(i, j);
       cont = $("#" + rc + " p").html();
       if(mines[rc] == true && cont != "+") {
-        return;
+        isWin = false;
       }
-      else {
-        win();
+      if(mines[rc] == false && cont == "+") {
+        isWin = false;
       }
     }
+  }
+  if(isWin) {
+    win();
   }
 }
 function win() {
