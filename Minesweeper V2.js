@@ -970,13 +970,33 @@ $(".space").click(function() {
     }
   }
 });
-$(".space").hover(function() {
+$(".space").mouseenter(function() {
   rcString = $(this).attr("id");
   r = Number(rcString.slice(2, 4));
   c = Number(rcString.slice(4, 6));
   rc = toRC(r, c);
+  if(mines[rc] == null || count[rc] == null) {
+    return;
+  }
   whereAmI = rc;
+  $("#" + rc).css("width", "26px");
+  $("#" + rc).css("height", "26px");
+  $("#" + rc + " p").css("padding", "5px 0px");
+  $("#" + rc).css("border", "2px solid #aaaaaa");
 });
+$(".space").mouseleave(function() {
+  rcString = $(this).attr("id");
+  r = Number(rcString.slice(2, 4));
+  c = Number(rcString.slice(4, 6));
+  rc = toRC(r, c);
+  if(mines[rc] == null || count[rc] == null) {
+    return;
+  }
+  $("#" + rc).css("width", "30px");
+  $("#" + rc).css("height", "30px");
+  $("#" + rc + " p").css("padding", "7px 0px");
+  $("#" + rc).css("border", "0px");
+})
 $(document).keydown(function(event) {
   if(mines[whereAmI] == null || count[whereAmI] == null) {
     return;
