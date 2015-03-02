@@ -951,6 +951,7 @@ function zeroPropogate(r, c) {
   console.log("checked " + rc);
 }
 function checkForWin() {
+  var isWin = true;
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
