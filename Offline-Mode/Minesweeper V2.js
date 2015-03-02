@@ -1035,6 +1035,9 @@ $(".space").mouseleave(function() {
   $("#" + rc).css("border", "0px");
 })
 $(document).keydown(function(event) {
+  if(event.which == 78) {
+    startNewGame();
+  }
   if(mines[whereAmI] == null || count[whereAmI] == null) {
     return;
   }
