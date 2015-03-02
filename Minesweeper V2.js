@@ -821,6 +821,9 @@ function displayMineCountOnBoard() {
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
       }
+      else if(count[rc] == 0) {
+        $("#" + rc + " p").html("&nbsp;").css("color", "black");
+      }
       else {
         c = count[rc];
         var color;
