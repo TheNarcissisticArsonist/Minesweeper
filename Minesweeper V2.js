@@ -721,6 +721,7 @@ var searched = {
   rc1514: false,
   rc1515: false
 }
+var whereAmI;
 
 function startNewGame() {
   numMines = prompt("How many mines do you want?");
@@ -966,6 +967,30 @@ $(".space").click(function() {
     }
     else {
       zeroPropogate(r, c);
+    }
+  }
+});
+$(".space").hover(function() {
+  rcString = $(this).attr("id");
+  r = Number(rcString.slice(2, 4));
+  c = Number(rcString.slice(4, 6));
+  rc = toRC(r, c);
+  whereAmI = rc;
+});
+$(document).keydown(function(event) {
+  if(event.which == 32) {
+    cont = $("#" + whereAmI + " p").html();
+    if(cont == "&nbsp;") {
+      $("#" + whereAmI + " p").html("+");
+    }
+    else if(cont == "+") {
+      $("#" + whereAmI + " p").html("?");
+    }
+    else if(cont == "?") {
+      $("#" + whereAmI + " p").html("&nbsp;");
+    }
+    else {
+      return;
     }
   }
 });
