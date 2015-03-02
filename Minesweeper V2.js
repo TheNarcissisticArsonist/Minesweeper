@@ -802,6 +802,8 @@ function clearBoard() {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
+      $("#" + rc).css("background-color", "#dddddd");
+      $("#" + rc + " p").css("color", "black").html("&nbsp;");
     }
   }
 }
@@ -818,11 +820,9 @@ function displayMineCountOnBoard() {
       rc = toRC(i, j);
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
-        $("#" + rc).css("background-color", "red");
       }
       else if(count[rc] == 0) {
         $("#" + rc + " p").html("&nbsp;").css("color", "black");
-        $("#" + rc).css("background-color", "#dddddd");
       }
       else {
         c = count[rc];
@@ -877,6 +877,17 @@ function updateNumMines() {
   }
   $("#numMines p").html(String(total-flag));
 }
+function endGame(spot) {
+  $("#" + spot).css("background-color", "red");
+  displayMineCountOnBoard();
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      board[rc] = null;
+      count[rc] = null;
+    }
+  }
+}
 
 $("#new").click(function() {
   startNewGame();
@@ -888,5 +899,9 @@ $(".space").click(function() {
   rc = toRC(r, c);
   if(mines[rc] == null || count[rc] == null) {
     return;
+  }
+  if(mines[rc]) {
+    alert("Oh no! A mine!");
+    endGame(rc);
   }
 });
