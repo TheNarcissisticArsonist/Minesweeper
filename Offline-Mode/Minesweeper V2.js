@@ -803,6 +803,7 @@ function clearBoard() {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
+      searched[rc] = false;
       $("#" + rc).css("background-color", "#dddddd");
       $("#" + rc + " p").css("color", "black").html("&nbsp;");
     }
@@ -890,6 +891,10 @@ function endGame(spot) {
       count[rc] = null;
     }
   }
+  $("#" + spot).css("width", "30px");
+  $("#" + spot).css("height", "30px");
+  $("#" + spot + " p").css("padding", "7px 0px");
+  $("#" + spot).css("border", "0px");
 }
 function safeLeftClick(spot) {
   switch(count[spot]) {
@@ -946,6 +951,7 @@ function zeroPropogate(r, c) {
   console.log("checked " + rc);
 }
 function checkForWin() {
+  var isWin = true;
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
@@ -969,6 +975,10 @@ function win() {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
+      $("#" + rc).css("width", "30px");
+      $("#" + rc).css("height", "30px");
+      $("#" + rc + " p").css("padding", "7px 0px");
+      $("#" + rc).css("border", "0px");
     }
   }
 }
