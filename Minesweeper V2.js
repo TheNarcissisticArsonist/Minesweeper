@@ -981,19 +981,23 @@ $(document).keydown(function(event) {
   if(mines[whereAmI] == null || count[whereAmI] == null) {
     return;
   }
+  numMines = Number($("#numMines p").html());
   if(event.which == 32) {
     cont = $("#" + whereAmI + " p").html();
     if(cont == "&nbsp;") {
-      $("#" + whereAmI + " p").html("+");
+      $("#" + whereAmI + " p").html("+").css("color", "red");
+      numMines--;
     }
     else if(cont == "+") {
-      $("#" + whereAmI + " p").html("?");
+      $("#" + whereAmI + " p").html("?").css("color", "purple");
+      numMines++;
     }
     else if(cont == "?") {
-      $("#" + whereAmI + " p").html("&nbsp;");
+      $("#" + whereAmI + " p").html("&nbsp;").css("color", "black");
     }
     else {
       return;
     }
   }
+  $("#numMines p").html(String(numMines));
 });
