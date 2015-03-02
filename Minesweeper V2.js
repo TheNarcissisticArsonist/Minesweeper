@@ -860,4 +860,6 @@ function displayMineCountOnBoard() {
   }
 }
 
-startNewGame();
+$("#new").click(function() {
+  startNewGame();
+});
