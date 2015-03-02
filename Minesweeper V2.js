@@ -945,6 +945,30 @@ function zeroPropogate(r, c) {
   }
   console.log("checked " + rc);
 }
+function checkForWin() {
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      cont = $("#" + rc + " p").html();
+      if(mines[rc] == true && cont != "+") {
+        return;
+      }
+      else {
+        win();
+      }
+    }
+  }
+}
+function win() {
+  alert("You've found all of the mines!\nYou win!");
+  for(i=1; i<=15; i++) {
+    for(j=1; j<=15; j++) {
+      rc = toRC(i, j);
+      mines[rc] = null;
+      count[rc] = null;
+    }
+  }
+}
 
 $("#new").click(function() {
   startNewGame();
@@ -1020,4 +1044,7 @@ $(document).keydown(function(event) {
     }
   }
   $("#numMines p").html(String(numMines));
+  if(numMines == 0) {
+    checkForWin();
+  }
 });
