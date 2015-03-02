@@ -881,3 +881,8 @@ function updateNumMines() {
 $("#new").click(function() {
   startNewGame();
 });
+$(".space").click(function() {
+  rcString = $(this).attr("id");
+  r = Number(rcString.slice(2, 4));
+  c = Number(rcString.slice(4, 6));
+});
