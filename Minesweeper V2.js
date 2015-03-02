@@ -741,7 +741,7 @@ function startNewGame() {
   else {
     alert("Please only enter numbers!");
   }
-  displayMineCountOnBoard();
+  //displayMineCountOnBoard();
   updateNumMines();
 }
 function placeMines(m) {
@@ -838,7 +838,7 @@ function displayMineCountOnBoard() {
             color = "red";
             break;
           case 4:
-            color = "#0000ff";
+            color = "#000099";
             break;
           case 5:
             color = "#993300";
@@ -888,6 +888,37 @@ function endGame(spot) {
     }
   }
 }
+function safeLeftClick(spot) {
+  switch(count[spot]) {
+    case 0:
+      $("#" + spot + " p").html("&nbsp;").css("color", "black");
+      break;
+    case 1:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "blue");
+      break;
+    case 2:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "green");
+      break;
+    case 3:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "red");
+      break;
+    case 4:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "#000099");
+      break;
+    case 5:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "#993300");
+      break;
+    case 6:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "#6600ff");
+      break;
+    case 7:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "#cc33ff");
+      break;
+    case 8:
+      $("#" + spot + " p").html(String(count[spot])).css("color", "#003300");
+      break;
+  }
+}
 
 $("#new").click(function() {
   startNewGame();
@@ -903,5 +934,8 @@ $(".space").click(function() {
   if(mines[rc]) {
     alert("Oh no! A mine!");
     endGame(rc);
+  }
+  else {
+    safeLeftClick(rc);
   }
 });
