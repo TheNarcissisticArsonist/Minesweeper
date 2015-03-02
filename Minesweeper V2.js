@@ -820,9 +820,11 @@ function displayMineCountOnBoard() {
       rc = toRC(i, j);
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
+        $("#" + rc).css("background-color", "#dddddd");
       }
       else if(count[rc] == 0) {
         $("#" + rc + " p").html("&nbsp;").css("color", "black");
+        $("#" + rc).css("background-color", "#cccccc");
       }
       else {
         c = count[rc];
@@ -854,7 +856,7 @@ function displayMineCountOnBoard() {
             break;
         }
         $("#" + rc + " p").html(String(c)).css("color", color);
-        $("#" + rc).css("background-color", "#dddddd");
+        $("#" + rc).css("background-color", "#cccccc");
       }
     }
   }
@@ -878,8 +880,8 @@ function updateNumMines() {
   $("#numMines p").html(String(total-flag));
 }
 function endGame(spot) {
-  $("#" + spot).css("background-color", "red");
   displayMineCountOnBoard();
+  $("#" + spot).css("background-color", "red");
   for(i=1; i<=15; i++) {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
@@ -918,6 +920,29 @@ function safeLeftClick(spot) {
       $("#" + spot + " p").html(String(count[spot])).css("color", "#003300");
       break;
   }
+  $("#" + spot).css("background-color", "#cccccc");
+}
+function zeroPropogate(r, c) {
+  rc = toRC(r, c);
+  if(searched[rc]) {
+    return;
+  }
+  searched[rc] = true;
+  if(count[rc] == 0) {
+    $("#" + rc).css("background-color", "#cccccc");
+    zeroPropogate(r+1, c+1);
+    zeroPropogate(r+1, c);
+    zeroPropogate(r+1, c-1);
+    zeroPropogate(r, c+1);
+    zeroPropogate(r, c-1);
+    zeroPropogate(r-1, c+1);
+    zeroPropogate(r-1, c);
+    zeroPropogate(r-1, c-1);
+  }
+  else if(count[rc] > 0) {
+    safeLeftClick(rc);
+  }
+  console.log("checked " + rc);
 }
 
 $("#new").click(function() {
@@ -940,7 +965,7 @@ $(".space").click(function() {
       safeLeftClick(rc);
     }
     else {
-      zeroPropogate(rc);
+      zeroPropogate(r, c);
     }
   }
 });
