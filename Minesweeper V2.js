@@ -805,19 +805,15 @@ function displayMinesOnBoard() {
     for(j=1; j<=15; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
-        $("#" + rc + " p").html("X");
-        $("#" + rc + " p").css("color", "red");
+        $("#" + rc + " p").html("X").css("color", "red");
       }
       else {
-        $("#" + rc + " p").html("&nbsp;");
-        $("#" + rc + " p").css("color", "black");
+        $("#" + rc + " p").html("&nbsp;").css("color", "black");
       }
     }
   }
 }
-function displayMineCountOnBoard() {
 
-}
 
 startNewGame();
 console.log(mines);
