@@ -1,3 +1,5 @@
+A preliminary version of the code...
+
 mine location object
 number of bordering mines object
 searched object (for propagation when clicking a zero)
