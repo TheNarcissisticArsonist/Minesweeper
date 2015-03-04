@@ -721,7 +721,7 @@ var searched = {
   rc1514: false,
   rc1515: false
 }
-var whereAmI;
+var whereAmI = null;
 
 function startNewGame() {
   numMines = prompt("How many mines do you want?");
@@ -1026,7 +1026,8 @@ $(".space").mouseleave(function() {
   r = Number(rcString.slice(2, 4));
   c = Number(rcString.slice(4, 6));
   rc = toRC(r, c);
-  if(mines[rc] == null || count[rc] == null) {
+  whereAmI = null;
+  if(mines[rc] == null || count[rc] == null || whereAmI == null) {
     return;
   }
   $("#" + rc).css("width", "30px");
