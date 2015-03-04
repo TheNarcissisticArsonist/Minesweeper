@@ -1035,7 +1035,7 @@ $(".space").mouseleave(function() {
   $("#" + rc).css("height", "30px");
   $("#" + rc + " p").css("padding", "7px 0px");
   $("#" + rc).css("border", "0px");
-})
+});
 $(document).keydown(function(event) {
   if(event.which == 78) {
     startNewGame();
