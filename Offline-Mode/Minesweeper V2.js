@@ -936,6 +936,7 @@ function zeroPropogate(r, c) {
   searched[rc] = true;
   if(count[rc] == 0) {
     $("#" + rc).css("background-color", "#cccccc");
+    $("#" + rc + " p").html("&nbsp;");
     zeroPropogate(r+1, c+1);
     zeroPropogate(r+1, c);
     zeroPropogate(r+1, c-1);
