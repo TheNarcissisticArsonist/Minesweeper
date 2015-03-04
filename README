@@ -1,5 +1,7 @@
 Open the HTML file in a web browser to run.
-Chrome definitely works, but I'm unsure about other browsers.
+It was made in chrome.
+Safari works, although the styling is a little funny.
+Other browsers are unknown.
 
 If you don't have internet access, you'll have to use the file in the Offline-Mode folder, as it uses a local copy of the jQuery library.
 
