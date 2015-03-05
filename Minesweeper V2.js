@@ -988,10 +988,9 @@ $("#new").click(function() {
   startNewGame();
 });
 $(".space").click(function() {
-  rcString = $(this).attr("id");
-  r = Number(rcString.slice(2, 4));
-  c = Number(rcString.slice(4, 6));
-  rc = toRC(r, c);
+  rc = $(this).attr("id");
+  r = Number(rc.slice(2, 4));
+  c = Number(rc.slice(4, 6));
   if(mines[rc] == null || count[rc] == null) {
     return;
   }
