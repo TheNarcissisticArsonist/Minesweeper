@@ -728,6 +728,10 @@ function startNewGame() {
   if(numMines == null) {
     return;
   }
+  if(numMines.length >= 100) {
+    alert("No.");
+    return;
+  }
   else if(numMines > 200) {
     alert("That's too many mines!");
   }

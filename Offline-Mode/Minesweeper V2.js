@@ -728,6 +728,10 @@ function startNewGame() {
   if(numMines == null) {
     return;
   }
+  if(numMines.length >= 100) {
+    alert("No.");
+    return;
+  }
   else if(numMines > 200) {
     alert("That's too many mines!");
   }
@@ -1036,7 +1040,7 @@ $(".space").mouseleave(function() {
   c = Number(rcString.slice(4, 6));
   rc = toRC(r, c);
   whereAmI = null;
-  if(mines[rc] == null || count[rc] == null || whereAmI == null) {
+  if(mines[rc] == null || count[rc] == null) {
     return;
   }
   $("#" + rc).css("width", "30px");
@@ -1048,7 +1052,7 @@ $(document).keydown(function(event) {
   if(event.which == 78) {
     startNewGame();
   }
-  if(mines[whereAmI] == null || count[whereAmI] == null) {
+  if(mines[whereAmI] == null || count[whereAmI] == null || whereAmI == null) {
     return;
   }
   numMines = Number($("#numMines p").html());
