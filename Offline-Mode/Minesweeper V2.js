@@ -994,6 +994,15 @@ $(".space").click(function() {
   if(mines[rc] == null || count[rc] == null) {
     return;
   }
+  cont = $("#" + rc + " p").html();
+  if(cont == "+") {
+    return;
+  }
+  if(cont == "?") {
+    if(!confirm("That could be a mine!\nAre you sure you want to go there?")) {
+      return;
+    }
+  }
   if(mines[rc]) {
     alert("Oh no! A mine!");
     endGame(rc);
