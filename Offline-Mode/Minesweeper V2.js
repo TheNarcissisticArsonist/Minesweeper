@@ -764,6 +764,27 @@ function startNewGame() {
         }
       }
     }
+    else if(easyMode && numMines > 50) {
+      check = true;
+      r=1;
+      c=1;
+      while(check) {
+        rc = toRC(r, c);
+        if(!mines[rc]) {
+          check = false;
+          safeLeftClick(rc);
+        }
+        else {
+          if(r == 15) {
+            r=0;
+            c++;
+          }
+          else {
+            r++;
+          }
+        }
+      }
+    }
   }
   else {
     alert("Please only enter numbers!");
