@@ -743,7 +743,7 @@ function startNewGame() {
     clearBoard();
     placeMines(numMines);
     loadCount();
-    if(easyMode && numMines <= 50) {
+    if(easyMode) {
       check = true;
       r=1;
       c=1;
@@ -762,26 +762,10 @@ function startNewGame() {
             r++;
           }
         }
-      }
-    }
-    else if(easyMode && numMines > 50) {
-      check = true;
-      r=1;
-      c=1;
-      while(check) {
-        rc = toRC(r, c);
-        if(!mines[rc]) {
-          check = false;
-          safeLeftClick(rc);
-        }
-        else {
-          if(r == 15) {
-            r=0;
-            c++;
-          }
-          else {
-            r++;
-          }
+        if(r>15 || c>15) {
+          alert("Easy mode is not available for this many mines.");
+          clearBoard();
+          return;
         }
       }
     }
