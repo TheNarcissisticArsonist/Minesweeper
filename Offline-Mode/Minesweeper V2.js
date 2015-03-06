@@ -722,6 +722,7 @@ var searched = {
   rc1515: false
 }
 var whereAmI = null;
+var easyMode = false;
 
 function startNewGame() {
   numMines = prompt("How many mines do you want?");
@@ -742,6 +743,27 @@ function startNewGame() {
     clearBoard();
     placeMines(numMines);
     loadCount();
+    if(easyMode && numMines <= 50) {
+      check = true;
+      r=1;
+      c=1;
+      while(check) {
+        rc = toRC(r, c);
+        if(count[rc] == 0 && !mines[rc]) {
+          check = false;
+          zeroPropogate(r, c);
+        }
+        else {
+          if(r == 15) {
+            r=0;
+            c++;
+          }
+          else {
+            r++;
+          }
+        }
+      }
+    }
   }
   else {
     alert("Please only enter numbers!");
@@ -1077,4 +1099,13 @@ $(document).keydown(function(event) {
   if(numMines == 0) {
     checkForWin();
   }
+});
+$("#reg").click(function() {
+  easyMode = false;
+});
+$("#fast").click(function() {
+  easyMode = true;
+});
+$(document).ready(function() {
+  easyMode = confirm("The game defaults to quick start mode, where it starts you off with a block of spaces.");
 });

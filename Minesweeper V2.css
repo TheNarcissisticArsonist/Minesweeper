@@ -39,3 +39,21 @@ div.space {
 div.space p {
   padding: 7px 0px;
 }
+div#reg {
+  width: 100px;
+  height: 40px;
+  background-color: #ddddff;
+  text-align: center;
+}
+div#reg p {
+  padding: 12px 0px;
+}
+div#fast {
+  width: 100px;
+  height: 40px;
+  background-color: #ddffdd;
+  text-align: center;
+}
+div#fast p {
+  padding: 12px 0px;
+}
