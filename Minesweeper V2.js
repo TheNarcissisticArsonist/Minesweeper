@@ -775,6 +775,7 @@ function startNewGame() {
 
   if(easyMode) {
     check = 0;
+    success = false;
     while(check <= 5000) {
       r = Math.floor(Math.random() * boardSize + 1);
       c = Math.floor(Math.random() * boardSize + 1);
@@ -782,10 +783,14 @@ function startNewGame() {
       if(count[rc] == 0 && !mines[rc]) {
         check = 9001; //It's over 9000!!!!!
         spaceClick(rc);
+        success = true;
       }
       else {
         check++;
       }
+    }
+    if(!success) {
+      alert("There are too many mines for quickstart!\nUse fewer mines, a larger board, or start yourself.");
     }
   }
   updateNumMines();
