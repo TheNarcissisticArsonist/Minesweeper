@@ -1153,6 +1153,3 @@ $(document).ready(function() {
     $("#reg").css("background-color", "#6666ff");
   }
 });
-
-startNewGame();
-spaceClick("rc0101");
