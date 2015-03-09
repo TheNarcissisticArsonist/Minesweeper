@@ -1123,6 +1123,16 @@ $(document).keydown(function(event) {
   if(event.which == 78) {
     startNewGame();
   }
+  if(event.which == 81) {
+    easyMode = true;
+    $("#reg").css("background-color", "#ddddff");
+    $("#fast").css("background-color", "#66ff66");
+  }
+  if(event.which == 82) {
+    easyMode = false;
+    $("#reg").css("background-color", "#6666ff");
+    $("#fast").css("background-color", "#ddffdd");
+  }
   if(mines[whereAmI] == null || count[whereAmI] == null || whereAmI == null) {
     return;
   }
