@@ -726,71 +726,68 @@ var easyMode = false;
 var boardSize = null;
 
 function startNewGame() {
-  boardSize = prompt("How big do you want the board to be?\n(From 1 to 99)");
-  if(boardSize > 99 || boardSize < 1) {
-    alert("That's out of the range given.");
+  boardSize = prompt("How big do you want the board to be?\n(From 2 to 99)");
+  if(boardSize == null) {
     return;
   }
-  if(boardSize != Math.floor(boardSize)) {
-    alert("Please only use whole numbers.");
+  if(isNaN(boardSize)) {
+    alert("Please only enter numbers.");
     return;
   }
-  if(boardSize > 0 && boardSize < 100) {
-    generateBoard(boardSize);
+  else {
+    boardSize = Number(boardSize);
   }
 
-  numMines = prompt("How many mines do you want?");
+  if(boardSize > 99) {
+    alert("That's too large!\nThe maximum board size is 99.");
+    return;
+  }
+  else if(boardSize > 37) {
+    alert("WARNING\nThis may be too big for your screen.");
+  }
+  else if(boardSize < 2) {
+    alert("That's too small!\nYou must have at least a size 2 board.");
+    return;
+  }
+  numMines = prompt("How many mines do you want?\n(This must be between 0 and the number of squares on the board.)");
   if(numMines == null) {
     return;
   }
-  if(numMines.length >= 100) {
-    alert("No.");
+  if(isNaN(numMines)) {
+    alert("Please only enter numbers.");
     return;
   }
-  else if(numMines > 200) {
-    alert("That's too many mines!");
+  else {
+    numMines = Number(numMines);
   }
-  else if(numMines < 10) {
-    alert("That's too few mines!");
+  if(numMines > (boardSize^2)-1) {
+    alert("That's too many mines!\nThe most you can have for a size " + String(boardSize) + " board is " + String((boardSize^2)-1) + ".");
+    return;
   }
-  else if(numMines != Math.floor(numMines)) {
-    alert("Please only use whole numbers.\nThis game doesn't support fractional numbers of mines.");
+  else if(numMines < 1) {
+    alert("That's too few mines!\nYou must have at least 1 mine.");
   }
-  else if(10 <= numMines && numMines <= 200) {
-    clearBoard();
-    placeMines(numMines);
-    loadCount();
-    if(easyMode) {
-      check = true;
-      r=1;
-      c=1;
-      while(check) {
-        rc = toRC(r, c);
-        if(count[rc] == 0 && !mines[rc]) {
-          check = false;
-          zeroPropogate(r, c);
-        }
-        else {
-          if(r == 15) {
-            r=0;
-            c++;
-          }
-          else {
-            r++;
-          }
-        }
-        if(r>15 || c>15) {
-          alert("Easy mode is not available for this many mines.");
-          clearBoard();
-          return;
-        }
+
+  generateBoard(boardSize);
+  clearBoard();
+  placeMines(numMines);
+  loadCount();
+
+  if(easyMode) {
+    check = 0;
+    while(check <= 5000) {
+      r = Math.floor(Math.random() * boardSize + 1);
+      c = Math.floor(Math.random() * boardSize + 1);
+      rc = toRC(r, c);
+      if(count[rc] == 0) {
+        check = 9001; //It's over 9000!!!!!
+        spaceClick(rc);
+      }
+      else {
+        check++;
       }
     }
   }
-  else {
-    alert("Please only enter numbers!");
-  }
-  //displayMineCountOnBoard();
   updateNumMines();
 }
 function placeMines(m) {
