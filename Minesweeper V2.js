@@ -725,6 +725,19 @@ var whereAmI = null;
 var easyMode = false;
 
 function startNewGame() {
+  boardSize = prompt("How big do you want the board to be?\n(From 1 to 99)");
+  if(boardSize > 99 || boardSize < 1) {
+    alert("That's out of the range given.");
+    return;
+  }
+  if(boardSize != Math.floor(boardSize)) {
+    alert("Please only use whole numbers.");
+    return;
+  }
+  if(boardSize > 0 && boardSize < 100) {
+    generateBoard(boardSize);
+  }
+
   numMines = prompt("How many mines do you want?");
   if(numMines == null) {
     return;
