@@ -1144,12 +1144,3 @@ $("#fast").click(function() {
   $("#reg").css("background-color", "#ddddff");
   $("#fast").css("background-color", "#66ff66");
 });
-$(document).ready(function() {
-  easyMode = confirm("The game defaults to quick start mode, where it starts you off with a block of spaces.");
-  if(easyMode) {
-    $("#fast").css("background-color", "#66ff66");
-  }
-  else {
-    $("#reg").css("background-color", "#6666ff");
-  }
-});
