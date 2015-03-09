@@ -760,8 +760,8 @@ function startNewGame() {
   else {
     numMines = Number(numMines);
   }
-  if(numMines > (boardSize^2)-1) {
-    alert("That's too many mines!\nThe most you can have for a size " + String(boardSize) + " board is " + String((boardSize^2)-1) + ".");
+  if(numMines > (boardSize*boardSize)-1) {
+    alert("That's too many mines!\nThe most you can have for a size " + String(boardSize) + " board is " + String((boardSize*boardSize)-1) + ".");
     return;
   }
   else if(numMines < 1) {
