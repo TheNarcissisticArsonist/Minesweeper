@@ -1110,10 +1110,20 @@ $(document).keydown(function(event) {
 });
 $("#reg").click(function() {
   easyMode = false;
+  $("#reg").css("background-color", "#9999ff");
+  $("#fast").css("background-color", "#ddffdd");
 });
 $("#fast").click(function() {
   easyMode = true;
+  $("#reg").css("background-color", "#ddddff");
+  $("#fast").css("background-color", "#99ff99");
 });
 $(document).ready(function() {
   easyMode = confirm("The game defaults to quick start mode, where it starts you off with a block of spaces.");
+  if(easyMode) {
+    $("#fast").css("background-color", "#99ff99");
+  }
+  else {
+    $("#reg").css("background-color", "#9999ff");
+  }
 });
