@@ -863,9 +863,19 @@ function generateBoard(size) {
       mines[toRC(i, j)] = null;
       count[toRC(i, j)] = null;
       searched[toRC(i, j)] = false;
-      document.getElementById(toRC(i, j)).addEventListener("click", spaceClick(toRC(i, j)));
-      document.getElementById(toRC(i, j)).addEventListener("mouseenter", spaceMouseEnter(toRC(i, j)));
-      document.getElementById(toRC(i, j)).addEventListener("mouseleave", spaceMouseLeave(toRC(i, j)));
+      temp = document.getElementById(toRC(i, j));
+      temp.addEventListener("click", function() {
+        attr = this.getAttribute("id");
+        spaceClick(attr);
+      });
+      temp.addEventListener("mouseenter", function() {
+        attr = this.getAttribute("id");
+        spaceMouseEnter(attr);
+      });
+      temp.addEventListener("mouseleave", function() {
+        attr = this.getAttribute("id");
+        spaceMouseLeave(attr);
+      });
     }
     $("#gameBoard").append('<br>');
   }
