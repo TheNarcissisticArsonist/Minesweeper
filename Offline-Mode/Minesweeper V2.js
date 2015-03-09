@@ -723,68 +723,84 @@ var searched = {
 }
 var whereAmI = null;
 var easyMode = false;
+var boardSize = null;
 
 function startNewGame() {
-  numMines = prompt("How many mines do you want?");
+  boardSize = prompt("How big do you want the board to be?\n(From 2 to 99)");
+  if(boardSize == null) {
+    return;
+  }
+  if(isNaN(boardSize)) {
+    alert("Please only enter numbers.");
+    return;
+  }
+  else {
+    boardSize = Number(boardSize);
+  }
+
+  if(boardSize > 99) {
+    alert("That's too large!\nThe maximum board size is 99.");
+    return;
+  }
+  else if(boardSize > 37) {
+    alert("WARNING\nThis may be too big for your screen.");
+  }
+  else if(boardSize < 2) {
+    alert("That's too small!\nYou must have at least a size 2 board.");
+    return;
+  }
+  numMines = prompt("How many mines do you want?\n(This must be between 0 and the number of squares on the board.)");
   if(numMines == null) {
     return;
   }
-  if(numMines.length >= 100) {
-    alert("No.");
+  if(isNaN(numMines)) {
+    alert("Please only enter numbers.");
     return;
   }
-  else if(numMines > 200) {
-    alert("That's too many mines!");
+  else {
+    numMines = Number(numMines);
   }
-  else if(numMines < 10) {
-    alert("That's too few mines!");
+  if(numMines > (boardSize*boardSize)-1) {
+    alert("That's too many mines!\nThe most you can have for a size " + String(boardSize) + " board is " + String((boardSize*boardSize)-1) + ".");
+    return;
   }
-  else if(numMines != Math.floor(numMines)) {
-    alert("Please only use whole numbers.\nThis game doesn't support fractional numbers of mines.");
+  else if(numMines < 1) {
+    alert("That's too few mines!\nYou must have at least 1 mine.");
   }
-  else if(10 <= numMines && numMines <= 200) {
-    clearBoard();
-    placeMines(numMines);
-    loadCount();
-    if(easyMode) {
-      check = true;
-      r=1;
-      c=1;
-      while(check) {
-        rc = toRC(r, c);
-        if(count[rc] == 0 && !mines[rc]) {
-          check = false;
-          zeroPropogate(r, c);
-        }
-        else {
-          if(r == 15) {
-            r=0;
-            c++;
-          }
-          else {
-            r++;
-          }
-        }
-        if(r>15 || c>15) {
-          alert("Easy mode is not available for this many mines.");
-          clearBoard();
-          return;
-        }
+
+  generateBoard(boardSize);
+  clearBoard();
+  placeMines(numMines);
+  loadCount();
+
+  if(easyMode) {
+    check = 0;
+    success = false;
+    while(check <= 5000) {
+      r = Math.floor(Math.random() * boardSize + 1);
+      c = Math.floor(Math.random() * boardSize + 1);
+      rc = toRC(r, c);
+      if(count[rc] == 0 && !mines[rc]) {
+        check = 9001; //It's over 9000!!!!!
+        spaceClick(rc);
+        success = true;
+      }
+      else {
+        check++;
       }
     }
+    if(!success) {
+      alert("There are too many mines for quickstart!\nUse fewer mines, a larger board, or start yourself.");
+    }
   }
-  else {
-    alert("Please only enter numbers!");
-  }
-  //displayMineCountOnBoard();
   updateNumMines();
 }
 function placeMines(m) {
   for(i=0; i<m; i++) {
     placeMine();
   }
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc] == null) {
         mines[rc] = false;
@@ -793,8 +809,8 @@ function placeMines(m) {
   }
 }
 function placeMine() {
-  r = Math.floor(Math.random() * 15 + 1);
-  c = Math.floor(Math.random() * 15 + 1);
+  r = Math.floor(Math.random() * boardSize + 1);
+  c = Math.floor(Math.random() * boardSize + 1);
   rc = toRC(r, c);
   if(mines[rc] == true) {
     placeMine();
@@ -805,8 +821,8 @@ function placeMine() {
   }
 }
 function loadCount() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       m = 0;
       toSearch = [
@@ -832,8 +848,8 @@ function loadCount() {
   }
 }
 function clearBoard() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
@@ -844,6 +860,32 @@ function clearBoard() {
   }
 }
 
+function generateBoard(size) {
+  $("#gameBoard").empty();
+  for(i=1; i<=size; i++) {
+    for(j=1; j<=size; j++) {
+      $("#gameBoard").append('<div class="space" id="' + toRC(i, j) + '"><p>&nbsp;</p></div>');
+      mines[toRC(i, j)] = null;
+      count[toRC(i, j)] = null;
+      searched[toRC(i, j)] = false;
+      temp = document.getElementById(toRC(i, j));
+      temp.addEventListener("click", function() {
+        attr = this.getAttribute("id");
+        spaceClick(attr);
+      });
+      temp.addEventListener("mouseenter", function() {
+        attr = this.getAttribute("id");
+        spaceMouseEnter(attr);
+      });
+      temp.addEventListener("mouseleave", function() {
+        attr = this.getAttribute("id");
+        spaceMouseLeave(attr);
+      });
+    }
+    $("#gameBoard").append('<br>');
+  }
+}
+
 function toRC(r, c) {
   newR = ("0" + String(r)).slice(-2);
   newC = ("0" + String(c)).slice(-2);
@@ -851,8 +893,8 @@ function toRC(r, c) {
 }
 
 function displayMineCountOnBoard() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
@@ -901,8 +943,8 @@ function displayMineCountOnBoard() {
 function updateNumMines() {
   flag = 0;
   total = 0;
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
         total++;
@@ -918,8 +960,8 @@ function updateNumMines() {
 function endGame(spot) {
   displayMineCountOnBoard();
   $("#" + spot).css("background-color", "red");
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
@@ -987,8 +1029,8 @@ function zeroPropogate(r, c) {
 }
 function checkForWin() {
   var isWin = true;
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       cont = $("#" + rc + " p").html();
       if(mines[rc] == true && cont != "+") {
@@ -1005,8 +1047,8 @@ function checkForWin() {
 }
 function win() {
   alert("You've found all of the mines!\nYou win!");
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
@@ -1018,11 +1060,7 @@ function win() {
   }
 }
 
-$("#new").click(function() {
-  startNewGame();
-});
-$(".space").click(function() {
-  rc = $(this).attr("id");
+function spaceClick(rc) {
   r = Number(rc.slice(2, 4));
   c = Number(rc.slice(4, 6));
   if(mines[rc] == null || count[rc] == null) {
@@ -1049,12 +1087,10 @@ $(".space").click(function() {
       zeroPropogate(r, c);
     }
   }
-});
-$(".space").mouseenter(function() {
-  rcString = $(this).attr("id");
-  r = Number(rcString.slice(2, 4));
-  c = Number(rcString.slice(4, 6));
-  rc = toRC(r, c);
+}
+function spaceMouseEnter(rc) {
+  r = Number(rc.slice(2, 4));
+  c = Number(rc.slice(4, 6));
   if(mines[rc] == null || count[rc] == null) {
     return;
   }
@@ -1063,12 +1099,11 @@ $(".space").mouseenter(function() {
   $("#" + rc).css("height", "26px");
   $("#" + rc + " p").css("padding", "5px 0px");
   $("#" + rc).css("border", "2px solid #aaaaaa");
-});
-$(".space").mouseleave(function() {
-  rcString = $(this).attr("id");
-  r = Number(rcString.slice(2, 4));
-  c = Number(rcString.slice(4, 6));
-  rc = toRC(r, c);
+
+}
+function spaceMouseLeave(rc) {
+  r = Number(rc.slice(2, 4));
+  c = Number(rc.slice(4, 6));
   whereAmI = null;
   if(mines[rc] == null || count[rc] == null) {
     return;
@@ -1077,10 +1112,26 @@ $(".space").mouseleave(function() {
   $("#" + rc).css("height", "30px");
   $("#" + rc + " p").css("padding", "7px 0px");
   $("#" + rc).css("border", "0px");
+
+}
+
+$("#new").click(function() {
+  startNewGame();
 });
+
 $(document).keydown(function(event) {
   if(event.which == 78) {
     startNewGame();
+  }
+  if(event.which == 81) {
+    easyMode = true;
+    $("#reg").css("background-color", "#ddddff");
+    $("#fast").css("background-color", "#66ff66");
+  }
+  if(event.which == 82) {
+    easyMode = false;
+    $("#reg").css("background-color", "#6666ff");
+    $("#fast").css("background-color", "#ddffdd");
   }
   if(mines[whereAmI] == null || count[whereAmI] == null || whereAmI == null) {
     return;
@@ -1117,13 +1168,4 @@ $("#fast").click(function() {
   easyMode = true;
   $("#reg").css("background-color", "#ddddff");
   $("#fast").css("background-color", "#66ff66");
-});
-$(document).ready(function() {
-  easyMode = confirm("The game defaults to quick start mode, where it starts you off with a block of spaces.");
-  if(easyMode) {
-    $("#fast").css("background-color", "#66ff66");
-  }
-  else {
-    $("#reg").css("background-color", "#6666ff");
-  }
 });
