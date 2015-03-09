@@ -779,7 +779,7 @@ function startNewGame() {
       r = Math.floor(Math.random() * boardSize + 1);
       c = Math.floor(Math.random() * boardSize + 1);
       rc = toRC(r, c);
-      if(count[rc] == 0) {
+      if(count[rc] == 0 && !mines[rc]) {
         check = 9001; //It's over 9000!!!!!
         spaceClick(rc);
       }
