@@ -57,3 +57,8 @@ div#fast {
 div#fast p {
   padding: 12px 0px;
 }
+div#gamemode {
+  text-align: center;
+  border: 1px solid #dddddd;
+  padding: 2px;
+}

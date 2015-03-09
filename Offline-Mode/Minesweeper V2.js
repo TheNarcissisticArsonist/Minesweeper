@@ -739,6 +739,9 @@ function startNewGame() {
   else if(numMines < 10) {
     alert("That's too few mines!");
   }
+  else if(numMines != Math.floor(numMines)) {
+    alert("Please only use whole numbers.\nThis game doesn't support fractional numbers of mines.");
+  }
   else if(10 <= numMines && numMines <= 200) {
     clearBoard();
     placeMines(numMines);
@@ -1107,10 +1110,20 @@ $(document).keydown(function(event) {
 });
 $("#reg").click(function() {
   easyMode = false;
+  $("#reg").css("background-color", "#6666ff");
+  $("#fast").css("background-color", "#ddffdd");
 });
 $("#fast").click(function() {
   easyMode = true;
+  $("#reg").css("background-color", "#ddddff");
+  $("#fast").css("background-color", "#66ff66");
 });
 $(document).ready(function() {
   easyMode = confirm("The game defaults to quick start mode, where it starts you off with a block of spaces.");
+  if(easyMode) {
+    $("#fast").css("background-color", "#66ff66");
+  }
+  else {
+    $("#reg").css("background-color", "#6666ff");
+  }
 });
