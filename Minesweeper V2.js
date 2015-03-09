@@ -858,6 +858,7 @@ function clearBoard() {
 }
 
 function generateBoard(size) {
+  $("#gameBoard").empty();
   for(i=1; i<=size; i++) {
     for(j=1; j<=size; j++) {
       $("#gameBoard").append('<div class="space" id="' + toRC(i, j) + '"><p>&nbsp;</p></div>');
@@ -1152,5 +1153,3 @@ $(document).ready(function() {
     $("#reg").css("background-color", "#6666ff");
   }
 });
-
-generateBoard(15);
