@@ -866,6 +866,9 @@ function generateBoard(size) {
       mines[toRC(i, j)] = null;
       count[toRC(i, j)] = null;
       searched[toRC(i, j)] = false;
+      document.getElementById(toRC(i, j)).addEventListener("click", spaceClick(toRC(i, j)));
+      document.getElementById(toRC(i, j)).addEventListener("mouseenter", spaceMouseEnter(toRC(i, j)));
+      document.getElementById(toRC(i, j)).addEventListener("mouseleave", spaceMouseLeave(toRC(i, j)));
     }
     $("#gameBoard").append('<br>');
   }
@@ -1045,11 +1048,7 @@ function win() {
   }
 }
 
-$("#new").click(function() {
-  startNewGame();
-});
-$(".space").click(function() {
-  rc = $(this).attr("id");
+function spaceClick(rc) {
   r = Number(rc.slice(2, 4));
   c = Number(rc.slice(4, 6));
   if(mines[rc] == null || count[rc] == null) {
@@ -1076,12 +1075,10 @@ $(".space").click(function() {
       zeroPropogate(r, c);
     }
   }
-});
-$(".space").mouseenter(function() {
-  rcString = $(this).attr("id");
-  r = Number(rcString.slice(2, 4));
-  c = Number(rcString.slice(4, 6));
-  rc = toRC(r, c);
+}
+function spaceMouseEnter(rc) {
+  r = Number(rc.slice(2, 4));
+  c = Number(rc.slice(4, 6));
   if(mines[rc] == null || count[rc] == null) {
     return;
   }
@@ -1090,12 +1087,11 @@ $(".space").mouseenter(function() {
   $("#" + rc).css("height", "26px");
   $("#" + rc + " p").css("padding", "5px 0px");
   $("#" + rc).css("border", "2px solid #aaaaaa");
-});
-$(".space").mouseleave(function() {
-  rcString = $(this).attr("id");
-  r = Number(rcString.slice(2, 4));
-  c = Number(rcString.slice(4, 6));
-  rc = toRC(r, c);
+
+}
+function spaceMouseLeave(rc) {
+  r = Number(rc.slice(2, 4));
+  c = Number(rc.slice(4, 6));
   whereAmI = null;
   if(mines[rc] == null || count[rc] == null) {
     return;
@@ -1104,7 +1100,13 @@ $(".space").mouseleave(function() {
   $("#" + rc).css("height", "30px");
   $("#" + rc + " p").css("padding", "7px 0px");
   $("#" + rc).css("border", "0px");
+
+}
+
+$("#new").click(function() {
+  startNewGame();
 });
+
 $(document).keydown(function(event) {
   if(event.which == 78) {
     startNewGame();
@@ -1154,3 +1156,6 @@ $(document).ready(function() {
     $("#reg").css("background-color", "#6666ff");
   }
 });
+
+startNewGame();
+spaceClick("rc0101");
