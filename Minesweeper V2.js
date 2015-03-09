@@ -739,6 +739,9 @@ function startNewGame() {
   else if(numMines < 10) {
     alert("That's too few mines!");
   }
+  else if(numMines != Math.floor(numMines)) {
+    alert("Please only use whole numbers.\nThis game doesn't support fractional numbers of mines.");
+  }
   else if(10 <= numMines && numMines <= 200) {
     clearBoard();
     placeMines(numMines);
