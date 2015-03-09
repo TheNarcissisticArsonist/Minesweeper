@@ -723,6 +723,7 @@ var searched = {
 }
 var whereAmI = null;
 var easyMode = false;
+var boardSize = null;
 
 function startNewGame() {
   boardSize = prompt("How big do you want the board to be?\n(From 1 to 99)");
@@ -796,8 +797,8 @@ function placeMines(m) {
   for(i=0; i<m; i++) {
     placeMine();
   }
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc] == null) {
         mines[rc] = false;
@@ -806,8 +807,8 @@ function placeMines(m) {
   }
 }
 function placeMine() {
-  r = Math.floor(Math.random() * 15 + 1);
-  c = Math.floor(Math.random() * 15 + 1);
+  r = Math.floor(Math.random() * boardSize + 1);
+  c = Math.floor(Math.random() * boardSize + 1);
   rc = toRC(r, c);
   if(mines[rc] == true) {
     placeMine();
@@ -818,8 +819,8 @@ function placeMine() {
   }
 }
 function loadCount() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       m = 0;
       toSearch = [
@@ -845,8 +846,8 @@ function loadCount() {
   }
 }
 function clearBoard() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
@@ -877,8 +878,8 @@ function toRC(r, c) {
 }
 
 function displayMineCountOnBoard() {
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
         $("#" + rc + " p").html("X").css("color", "black");
@@ -927,8 +928,8 @@ function displayMineCountOnBoard() {
 function updateNumMines() {
   flag = 0;
   total = 0;
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
         total++;
@@ -944,8 +945,8 @@ function updateNumMines() {
 function endGame(spot) {
   displayMineCountOnBoard();
   $("#" + spot).css("background-color", "red");
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
@@ -1013,8 +1014,8 @@ function zeroPropogate(r, c) {
 }
 function checkForWin() {
   var isWin = true;
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       cont = $("#" + rc + " p").html();
       if(mines[rc] == true && cont != "+") {
@@ -1031,8 +1032,8 @@ function checkForWin() {
 }
 function win() {
   alert("You've found all of the mines!\nYou win!");
-  for(i=1; i<=15; i++) {
-    for(j=1; j<=15; j++) {
+  for(i=1; i<=boardSize; i++) {
+    for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       mines[rc] = null;
       count[rc] = null;
