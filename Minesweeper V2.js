@@ -844,6 +844,18 @@ function clearBoard() {
   }
 }
 
+function generateBoard(size) {
+  for(i=1; i<=size; i++) {
+    for(j=1; j<=size; j++) {
+      $("#gameBoard").append('<div class="space" id="' + toRC(i, j) + '"><p>&nbsp;</p></div>');
+      mines[toRC(i, j)] = null;
+      count[toRC(i, j)] = null;
+      searched[toRC(i, j)] = false;
+    }
+    $("#gameBoard").append('<br>');
+  }
+}
+
 function toRC(r, c) {
   newR = ("0" + String(r)).slice(-2);
   newC = ("0" + String(c)).slice(-2);
@@ -1127,3 +1139,5 @@ $(document).ready(function() {
     $("#reg").css("background-color", "#6666ff");
   }
 });
+
+generateBoard(15);
