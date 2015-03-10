@@ -1,7 +1,7 @@
 Open the HTML file in a web browser to run.
 It was made in chrome.
 Safari works, although the styling is a little funny.
-Other browsers are unknown.
+Other browsers are unknown. If there's a problem, make an issue about it and I'll see if I can fix it.
 
 If you don't have internet access, you'll have to use the file in the Offline-Mode folder, as it uses a local copy of the jQuery library.
 
@@ -10,14 +10,20 @@ If you don't have internet access, you'll have to use the file in the Offline-Mo
 How to Play:
 
 To start a new game, press the button that says new game.
-You can have between 10 and 200 mines. The recommended number is between 25 and 50.
+It will prompt you on how big you want the board to be.
+If it can't fit the width of the board on the screen, it will wraparound, so it's recommended not to go too high.
+On a 13-inch display you should be able to go up to 37x37 without this happening.
 
+Then, you are prompted for the number of mines. Any number from 1 to 1 less than the number of squares is valid.
+
+Once the game starts:
 Left click to test a square. If it's a mine, you lose.
 If it's safe, it tells you how many mines it's touching, from 1 to 8.
-If it touches no mines, the entire region will open up.
+If it touches no mines, the entire region of no mines will be revealed.
 
-Press space while hovering over a square to flag it.
-Press space again to make it a question mark.
-Press space again to reset it.
+Press shift while hovering over a square to flag it.
+Press shift again to make it a question mark.
+Press shift again to reset it.
 
-Find all the mines to win!
+Find all the mines to win*!
+*This is actually how the program tests whether you've won. You have to mark all of the flags.
