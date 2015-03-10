@@ -12,6 +12,7 @@ How to Play:
 To start a new game, press the button that says new game.
 It will prompt you on how big you want the board to be.
 Then, you are prompted for the number of mines. Any number from 1 to 1 less than the number of squares is valid.
+Warning! Larger board sizes and smaller numbers of mines can cause lag, and may even crash the program.
 
 Once the game starts:
 Left click to test a square. If it's a mine, you lose.
@@ -22,5 +23,5 @@ Press shift while hovering over a square to flag it.
 Press shift again to make it a question mark.
 Press shift again to reset it.
 
-Find all the mines to win*!
+Find all the mines to win!*
 *This is actually how the program tests whether you've won. You have to mark all of the flags.
