@@ -1137,7 +1137,7 @@ $(document).keydown(function(event) {
     return;
   }
   numMines = Number($("#numMines p").html());
-  if(event.which == 32) {
+  if(event.which == 16) {
     cont = $("#" + whereAmI + " p").html();
     if(cont == "&nbsp;" && !searched[whereAmI]) {
       $("#" + whereAmI + " p").html("+").css("color", "red");
