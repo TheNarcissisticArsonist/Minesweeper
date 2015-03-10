@@ -884,6 +884,7 @@ function generateBoard(size) {
     }
     $("#gameBoard").append('<br>');
   }
+  $("#gameBoard").css("width", boardSize * 32 + 200);
 }
 
 function toRC(r, c) {

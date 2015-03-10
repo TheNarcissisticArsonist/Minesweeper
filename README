@@ -11,9 +11,6 @@ How to Play:
 
 To start a new game, press the button that says new game.
 It will prompt you on how big you want the board to be.
-If it can't fit the width of the board on the screen, it will wraparound, so it's recommended not to go too high.
-On a 13-inch display you should be able to go up to 37x37 without this happening.
-
 Then, you are prompted for the number of mines. Any number from 1 to 1 less than the number of squares is valid.
 
 Once the game starts:
