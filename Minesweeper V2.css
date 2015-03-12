@@ -62,3 +62,8 @@ div#gamemode {
   border: 1px solid #dddddd;
   padding: 2px;
 }
+div.space p img {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}

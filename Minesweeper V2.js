@@ -855,7 +855,7 @@ function clearBoard() {
       count[rc] = null;
       searched[rc] = false;
       $("#" + rc).css("background-color", "#dddddd");
-      $("#" + rc + " p").css("color", "black").html("&nbsp;");
+      $("#" + rc + " p").css("color", "black").html("<img src='Blank.png'></img>");
     }
   }
 }
@@ -864,7 +864,7 @@ function generateBoard(size) {
   $("#gameBoard").empty();
   for(i=1; i<=size; i++) {
     for(j=1; j<=size; j++) {
-      $("#gameBoard").append('<div class="space" id="' + toRC(i, j) + '"><p>&nbsp;</p></div>');
+      $("#gameBoard").append('<div class="space" id="' + toRC(i, j) + '"><p><img src="Blank.png"></img></p></div>');
       mines[toRC(i, j)] = null;
       count[toRC(i, j)] = null;
       searched[toRC(i, j)] = false;
@@ -898,11 +898,11 @@ function displayMineCountOnBoard() {
     for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       if(mines[rc]) {
-        $("#" + rc + " p").html("X").css("color", "black");
+        $("#" + rc + " p").html("<img src='Mine.png'></img>").css("color", "black");
         $("#" + rc).css("background-color", "#dddddd");
       }
       else if(count[rc] == 0) {
-        $("#" + rc + " p").html("&nbsp;").css("color", "black");
+        $("#" + rc + " p").html("<img src='Blank.png'></img>").css("color", "black");
         $("#" + rc).css("background-color", "#cccccc");
       }
       else {
@@ -951,7 +951,7 @@ function updateNumMines() {
         total++;
       }
       temp = $("#" + rc + " p").html();
-      if(temp == "+") {
+      if(temp == "<img src='Flag.png'></img>") {
         flag++;
       }
     }
@@ -1013,7 +1013,7 @@ function zeroPropogate(r, c) {
   searched[rc] = true;
   if(count[rc] == 0) {
     $("#" + rc).css("background-color", "#cccccc");
-    $("#" + rc + " p").html("&nbsp;");
+    $("#" + rc + " p").html("<img src='Blank.png'></img>");
     zeroPropogate(r+1, c+1);
     zeroPropogate(r+1, c);
     zeroPropogate(r+1, c-1);
@@ -1034,10 +1034,10 @@ function checkForWin() {
     for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       cont = $("#" + rc + " p").html();
-      if(mines[rc] == true && cont != "+") {
+      if(mines[rc] == true && cont != "<img src='Flag.png'></img>") {
         isWin = false;
       }
-      if(mines[rc] == false && cont == "+") {
+      if(mines[rc] == false && cont == "<img src='Flag.png'></img>") {
         isWin = false;
       }
     }
@@ -1068,7 +1068,7 @@ function spaceClick(rc) {
     return;
   }
   cont = $("#" + rc + " p").html();
-  if(cont == "+") {
+  if(cont == "<img src='Flag.png'></img>") {
     return;
   }
   if(cont == "?") {
@@ -1141,15 +1141,15 @@ $(document).keydown(function(event) {
   if(event.which == 16) {
     cont = $("#" + whereAmI + " p").html();
     if(cont == "&nbsp;" && !searched[whereAmI]) {
-      $("#" + whereAmI + " p").html("+").css("color", "red");
+      $("#" + whereAmI + " p").html("<img src='Flag.png'></img>").css("color", "red");
       numMines--;
     }
-    else if(cont == "+") {
+    else if(cont == "<img src='Flag.png'></img>") {
       $("#" + whereAmI + " p").html("?").css("color", "purple");
       numMines++;
     }
     else if(cont == "?") {
-      $("#" + whereAmI + " p").html("&nbsp;").css("color", "black");
+      $("#" + whereAmI + " p").html("<img src='Blank.png'></img>").css("color", "black");
     }
     else {
       return;
