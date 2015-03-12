@@ -951,7 +951,7 @@ function updateNumMines() {
         total++;
       }
       temp = $("#" + rc + " p").html();
-      if(temp == "<img src='Flag.png'></img>") {
+      if(temp == "<img src='Flag.png'>") {
         flag++;
       }
     }
@@ -976,7 +976,7 @@ function endGame(spot) {
 function safeLeftClick(spot) {
   switch(count[spot]) {
     case 0:
-      $("#" + spot + " p").html("&nbsp;").css("color", "black");
+      $("#" + spot + " p").html("<img src='Blank.png'></img>").css("color", "black");
       break;
     case 1:
       $("#" + spot + " p").html(String(count[spot])).css("color", "blue");
@@ -1034,10 +1034,10 @@ function checkForWin() {
     for(j=1; j<=boardSize; j++) {
       rc = toRC(i, j);
       cont = $("#" + rc + " p").html();
-      if(mines[rc] == true && cont != "<img src='Flag.png'></img>") {
+      if(mines[rc] == true && cont != '<img src="Flag.png">') {
         isWin = false;
       }
-      if(mines[rc] == false && cont == "<img src='Flag.png'></img>") {
+      if(mines[rc] == false && cont == '<img src="Flag.png">') {
         isWin = false;
       }
     }
@@ -1068,7 +1068,7 @@ function spaceClick(rc) {
     return;
   }
   cont = $("#" + rc + " p").html();
-  if(cont == "<img src='Flag.png'></img>") {
+  if(cont == '<img src="Flag.png">') {
     return;
   }
   if(cont == "?") {
@@ -1140,11 +1140,11 @@ $(document).keydown(function(event) {
   numMines = Number($("#numMines p").html());
   if(event.which == 16) {
     cont = $("#" + whereAmI + " p").html();
-    if(cont == "&nbsp;" && !searched[whereAmI]) {
+    if(cont == '<img src="Blank.png">' && !searched[whereAmI]) {
       $("#" + whereAmI + " p").html("<img src='Flag.png'></img>").css("color", "red");
       numMines--;
     }
-    else if(cont == "<img src='Flag.png'></img>") {
+    else if(cont == '<img src="Flag.png">') {
       $("#" + whereAmI + " p").html("?").css("color", "purple");
       numMines++;
     }
