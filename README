@@ -23,5 +23,8 @@ Press shift while hovering over a square to flag it.
 Press shift again to make it a question mark.
 Press shift again to reset it.
 
+Press Q and R to change game mode to quick-start or regular.
+Press N to start a new game.
+
 Find all the mines to win!*
 *This is actually how the program tests whether you've won. You have to mark all of the flags.
