@@ -1,0 +1,42 @@
+~~~~~HOW TO PLAY~~~~~
+
+~Starting the Game~
+
+-Open "Minesweeper V2.html" in your browser of choice.
+-Choose either "Regular" or "Quick-Start" mode. (Regular is set by default)
+	-Quick-Start will automatically click an empty tile.
+	-Regular will leave them all unclicked.
+-Click "New Game" in the top left corner.
+-Type in a number between 2-99. This will make the tile as wide and high as you want.
+	-Example: Typing 4 will make a 4x4 grid of tiles.
+-Type in the number of mines you want there to be.
+
+
+~Objective of the game~
+
+-Try to uncover all of the empty tiles without uncovering a mine.
+-Uncover a mine and the game is over. You lose.
+
+
+~How to play Minesweeper~
+
+-Click any of the grey tiles.
+-All the connected empty tiles around this one will uncover.
+-All empty tiles will turn into a darker shade of grey.
+-If a number appears, that indicates how many mines are in the 8 surrounding tiles 
+ near the one containing the number.
+-Determine where you think the mines are.
+-Place a flag where you are sure there is a mine.
+	- Alternatively, place a question mark to mark where you think there is a mine, 
+	  but are not completely sure.
+-Repeat this process until you uncover all empty tiles and mark where all the mines are.
+
+
+~HotKeys~
+
+-Press SHIFT over a tile to place a flag.
+-Press SHIFT again to place a question mark.
+-Press SHIFT a third time to return the tile to its original state.
+-Press Q to change to "Quick-Start" mode.
+-Press R to change to "Regular" mode.
+-Press N to start a new game.
