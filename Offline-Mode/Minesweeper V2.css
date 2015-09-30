@@ -57,6 +57,24 @@ div#fast {
 div#fast p {
   padding: 12px 0px;
 }
+div#clk {
+  width: 100px;
+  height: 40px;
+  background-color: #6666ff;
+  text-align: center;
+}
+div#clk p {
+  padding: 12px 0px;
+}
+div#flag {
+  width: 100px;
+  height: 40px;
+  background-color: #ddffdd;
+  text-align: center;
+}
+div#flag p {
+  padding: 12px 0px;
+}
 div#gamemode {
   text-align: center;
   border: 1px solid #dddddd;

@@ -3,6 +3,7 @@ var count = {};
 var searched = {};
 var whereAmI = null;
 var easyMode = false;
+var leftClickFlag = false;
 var boardSize = null;
 
 function startNewGame() {
@@ -151,7 +152,34 @@ function generateBoard(size) {
       temp = document.getElementById(toRC(i, j));
       temp.addEventListener("click", function() {
         attr = this.getAttribute("id");
-        spaceClick(attr);
+        if(!leftClickFlag) {
+          spaceClick(attr);
+        }
+        else {
+          if(mines[whereAmI] == null || count[whereAmI] == null || whereAmI == null) {
+            return;
+          }
+          numMines = Number($("#numMines p").html());
+          cont = $("#" + whereAmI + " p").html();
+          if(cont == '<img src="Blank.png">' && !searched[whereAmI]) {
+            $("#" + whereAmI + " p").html("<img src='Flag.png'></img>").css("color", "red");
+            numMines--;
+          }
+          else if(cont == '<img src="Flag.png">') {
+            $("#" + whereAmI + " p").html("?").css("color", "purple");
+            numMines++;
+          }
+          else if(cont == "?") {
+            $("#" + whereAmI + " p").html("<img src='Blank.png'></img>").css("color", "black");
+          }
+          else {
+            return;
+          }
+          $("#numMines p").html(String(numMines));
+          if(numMines == 0) {
+            checkForWin();
+          }
+        }
       });
       temp.addEventListener("mouseenter", function() {
         attr = this.getAttribute("id");
@@ -449,4 +477,14 @@ $("#fast").click(function() {
   easyMode = true;
   $("#reg").css("background-color", "#ddddff");
   $("#fast").css("background-color", "#66ff66");
+});
+$("#clk").click(function() {
+  leftClickFlag = false;
+  $("#clk").css("background-color", "#6666ff");
+  $("#flag").css("background-color", "#ddffdd");
+});
+$("#flag").click(function() {
+  leftClickFlag = true;
+  $("#clk").css("background-color", "#ddddff");
+  $("#flag").css("background-color", "#66ff66");
 });
