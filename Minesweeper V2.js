@@ -3,6 +3,7 @@ var count = {};
 var searched = {};
 var whereAmI = null;
 var easyMode = false;
+var leftClickFlag = false;
 var boardSize = null;
 
 function startNewGame() {
@@ -449,4 +450,14 @@ $("#fast").click(function() {
   easyMode = true;
   $("#reg").css("background-color", "#ddddff");
   $("#fast").css("background-color", "#66ff66");
+});
+$("#clk").click(function() {
+  leftClickFlag = false;
+  $("#clk").css("background-color", "#6666ff");
+  $("#flag").css("background-color", "#ddffdd");
+});
+$("#flag").click(function() {
+  leftClickFlag = true;
+  $("#clk").css("background-color", "#ddddff");
+  $("#flag").css("background-color", "#66ff66");
 });
